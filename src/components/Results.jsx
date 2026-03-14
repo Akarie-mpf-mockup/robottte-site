@@ -1,10 +1,30 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
+
+function CountUp({ end, decimals = 0, suffix = '', inView }) {
+  const [value, setValue] = useState(0)
+  useEffect(() => {
+    if (!inView) return
+    const duration = 2000
+    const startTime = performance.now()
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setValue(end * eased)
+      if (progress < 1) requestAnimationFrame(tick)
+    }
+    requestAnimationFrame(tick)
+  }, [inView])
+  const formatted = decimals > 0
+    ? value.toFixed(decimals)
+    : Math.floor(value).toLocaleString()
+  return <>{formatted}{suffix}</>
+}
 
 const stats = [
-  { num: '3,000+', label: '導入事業所数', sub: 'sites' },
-  { num: '98.02%', label: '継続率', sub: 'retention' },
-  { num: '24/365', label: '自動対応', sub: 'automation' },
+  { display: null, end: 3000, suffix: '+', decimals: 0, label: '導入事業所数', sub: 'sites' },
+  { display: null, end: 98.02, suffix: '%', decimals: 2, label: '継続率', sub: 'retention' },
+  { display: '24/365', end: null, label: '応募機会を逃さない', sub: 'never miss a chance' },
 ]
 const voices = [
   { text: '応募者が応募に至るタイミングで逃さずサポートしてくれる。夜間の応募にも即対応できるようになった。', company: '介護福祉事業者', industry: '介護' },
@@ -26,9 +46,13 @@ export default function Results() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 72 }} className="stats-grid">
           {stats.map((s, i) => (
             <motion.div key={s.label}
-              initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: i * 0.12 }}
               style={{ padding: '48px 40px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', textAlign: 'center', boxShadow: 'var(--shadow)' }}>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(2.4rem, 4vw, 3.4rem)', fontWeight: 800, color: 'var(--accent)', lineHeight: 1, marginBottom: 12, letterSpacing: '-0.03em' }}>{s.num}</div>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(2.4rem, 4vw, 3.4rem)', fontWeight: 800, color: 'var(--accent)', lineHeight: 1, marginBottom: 12, letterSpacing: '-0.03em' }}>
+                {s.end !== null
+                  ? <CountUp end={s.end} decimals={s.decimals} suffix={s.suffix} inView={inView} />
+                  : s.display}
+              </div>
               <div style={{ fontSize: '0.95rem', fontWeight: 500, color: 'var(--text)', marginBottom: 4 }}>{s.label}</div>
               <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 500, letterSpacing: '0.12em', color: 'var(--text-dim)', textTransform: 'uppercase' }}>{s.sub}</div>
             </motion.div>

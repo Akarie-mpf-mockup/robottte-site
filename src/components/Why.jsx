@@ -26,19 +26,30 @@ export default function Why() {
           {problems.map((p, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 + i * 0.12 }}
-              style={{ padding: '40px 32px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', boxShadow: 'var(--shadow)', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)', opacity: 0.6, borderRadius: 'var(--radius) var(--radius) 0 0' }} />
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent)', opacity: 0.5, marginBottom: 20, letterSpacing: '0.02em' }}>{p.time}</div>
+              whileHover={{ y: -6, rotateY: 2, boxShadow: '0 20px 50px rgba(0,160,232,0.12)', transition: { type: 'spring', stiffness: 300, damping: 22 } }}
+              style={{ padding: '40px 32px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', boxShadow: 'var(--shadow)', position: 'relative', overflow: 'hidden', transformStyle: 'preserve-3d' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)', opacity: 0.55, borderRadius: 'var(--radius) var(--radius) 0 0' }} />
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.5rem', fontWeight: 700, color: 'var(--accent)', opacity: 0.4, marginBottom: 20, letterSpacing: '0.02em' }}>{p.time}</div>
               <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'var(--text)', marginBottom: 28, fontWeight: 500 }}>{p.scene}</p>
-              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.08em', color: 'var(--accent)', background: 'var(--accent-light)', padding: '5px 14px', borderRadius: 6 }}>{p.impact}</span>
+              <motion.span
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={inView ? { scale: 1, opacity: 1 } : {}}
+                transition={{ delay: 0.5 + i * 0.12, type: 'spring', stiffness: 400 }}
+                style={{ display: 'inline-block', fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.08em', color: 'var(--accent)', background: 'var(--accent-light)', padding: '5px 14px', borderRadius: 6 }}>
+                {p.impact}
+              </motion.span>
             </motion.div>
           ))}
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.6 }} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
           <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', color: 'var(--text-dim)', textTransform: 'uppercase', marginRight: 4 }}>Focus Industries</span>
-          {industries.map(ind => (
-            <span key={ind} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '0.8rem', fontWeight: 500, padding: '6px 18px', border: '1.5px solid var(--border)', borderRadius: 8, color: 'var(--text-muted)', background: 'var(--surface)' }}>{ind}</span>
+          {industries.map((ind, i) => (
+            <motion.span key={ind}
+              initial={{ opacity: 0, scale: 0.9 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ delay: 0.7 + i * 0.06 }}
+              style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '0.8rem', fontWeight: 500, padding: '6px 18px', border: '1.5px solid var(--border)', borderRadius: 8, color: 'var(--text-muted)', background: 'var(--surface)' }}>
+              {ind}
+            </motion.span>
           ))}
         </motion.div>
       </div>

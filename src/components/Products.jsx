@@ -15,14 +15,26 @@ export default function Products() {
       <div className="container">
         <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 64 }}>
           <p className="label">Products</p>
-          <h2 className="section-title" style={{ marginBottom: 16 }}>応募前 → 選考中 → 入社後</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 620 }}>
-            AIやシステムはあくまでツール。大切なのは「何を自動化し、何を人が担うか」——そのバウンダリー設計こそが、採用の質と定着率を左右する。<br />
-            robottteは高単価・高回転のモデルではなく、企業が自走できるよう後方支援に徹する。
-          </p>
+          <h2 className="section-title" style={{ marginBottom: 32 }}>応募前 → 選考中 → 入社後</h2>
+
+          {/* Philosophy block */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, maxWidth: 900, marginBottom: 0 }} className="philosophy-grid">
+            <div style={{ padding: '32px 36px', background: 'var(--bg2)', borderRadius: 'var(--radius)', borderLeft: '3px solid var(--accent)' }}>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>ツールは手段、自走が目的</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
+                AIやシステムはあくまでツールに過ぎない。大切なのはその使い方——全自動なのか、半自動なのか、手作業なのか。人とシステムのバウンダリーを正しく設計することが、採用の質と定着率を左右する。robottteは「企業が自走できる状態」をゴールに、後方支援に徹する。
+              </p>
+            </div>
+            <div style={{ padding: '32px 36px', background: 'var(--bg2)', borderRadius: 'var(--radius)', borderLeft: '3px solid rgba(0,160,232,0.4)' }}>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>持続可能なモデルを選ぶ</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
+                人口減少が続く社会で、高単価・高回転のサービスは持続しない。robottteは顧客が長く、無理なく使い続けられることを最優先に設計する。ハビタブルゾーンを広げるためには、提供側も持続可能でなければならない。
+              </p>
+            </div>
+          </div>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }} className="products-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 56 }} className="products-grid">
           {products.map((p, i) => (
             <motion.div key={p.name}
               initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
@@ -50,7 +62,10 @@ export default function Products() {
           ))}
         </div>
       </div>
-      <style>{`@media (max-width: 900px) { .products-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        @media (max-width: 900px) { .products-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 760px) { .philosophy-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
   )
 }

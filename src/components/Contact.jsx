@@ -16,9 +16,12 @@ export default function Contact() {
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 2, marginBottom: 44, maxWidth: 480, margin: '0 auto 44px' }}>
                 サービス導入のご相談・資料請求・採用についてはメールにてご連絡ください。
               </p>
+              {/* Pulsing glow CTA */}
               <motion.a href="mailto:info@robottte.com"
-                whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}
-                style={{ display: 'inline-block', padding: '17px 52px', background: 'var(--accent)', color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', fontWeight: 700, letterSpacing: '0.03em', borderRadius: 12, boxShadow: '0 6px 28px rgba(0,160,232,0.40)', marginBottom: 20 }}>
+                whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
+                animate={{ boxShadow: ['0 6px 28px rgba(0,160,232,0.35)', '0 6px 44px rgba(0,160,232,0.65)', '0 6px 28px rgba(0,160,232,0.35)'] }}
+                transition={{ boxShadow: { duration: 2.4, repeat: Infinity, ease: 'easeInOut' } }}
+                style={{ display: 'inline-block', padding: '17px 52px', background: 'var(--accent)', color: '#fff', fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', fontWeight: 700, letterSpacing: '0.03em', borderRadius: 12, marginBottom: 20 }}>
                 info@robottte.com
               </motion.a>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 500 }}>通常2営業日以内にご返信いたします</p>
