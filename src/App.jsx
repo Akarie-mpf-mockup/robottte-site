@@ -18,9 +18,9 @@ export default function App() {
       <Why />
       <Products />
       <Results />
+      <News />
       <Team />
       <About />
-      <News />
       <Careers />
       <Contact />
       <Footer />
