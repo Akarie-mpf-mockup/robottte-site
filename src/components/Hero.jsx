@@ -94,11 +94,6 @@ export default function Hero() {
 
         <motion.div style={{ flex: 1, minWidth: 0, y, opacity }} variants={containerAnim} initial="hidden" animate="show">
 
-          <motion.p variants={itemAnim} style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ width: 24, height: 2, background: 'var(--accent)', display: 'block', borderRadius: 1 }} />
-            Habitable Zone — HR Technology
-          </motion.p>
-
           {/* 見出し: 各行を display:block + white-space:nowrap で折り返しを防ぐ */}
           <motion.h1 variants={itemAnim} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: 'clamp(1.9rem, 4.8vw, 4.8rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.03em', marginBottom: 12, color: 'var(--text)' }}>
             <span style={{ display: 'block', whiteSpace: 'nowrap' }}>ハビタブルゾーンを、</span>

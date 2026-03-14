@@ -39,7 +39,7 @@ export default function Nav() {
           <img
             src="/images/robottte納品_Horizontal Set.png"
             alt="robottte"
-            style={{ height: 56, width: 56, objectFit: 'contain' }}
+            style={{ height: 112, width: 112, objectFit: 'contain' }}
           />
         </a>
 
