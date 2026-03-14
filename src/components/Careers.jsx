@@ -45,7 +45,6 @@ export default function Careers() {
             </div>
           )}
         </div>
-        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', marginTop: 24 }}>※ 採用情報の追加・更新は public/data/careers.json を編集してください</p>
       </div>
       <style>{`@media (max-width: 700px) { .job-row { grid-template-columns: 1fr !important; } }`}</style>
     </section>

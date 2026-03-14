@@ -15,8 +15,8 @@ const members = [
     career: ['東京外国語大学', 'ユニリーバ', 'ベネッセ（介護事業）', '株式会社アカリエ 創業 / EXIT', 'robottte 創業'],
   },
   {
-    name: '清水 愛理',
-    nameEn: 'Airi Shimizu',
+    name: 'A.S.',
+    nameEn: null,
     initials: 'AS',
     role: 'Engineer',
     pillar: '技術',
@@ -26,7 +26,7 @@ const members = [
     career: ['ニコンシステムズ', '株式会社アカリエ', 'robottte'],
   },
   {
-    name: '林 和',
+    name: 'H.',
     nameEn: null,
     initials: 'H',
     role: 'Customer Success',

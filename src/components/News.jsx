@@ -35,7 +35,6 @@ export default function News() {
             </div>
           )}
         </div>
-        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', marginTop: 20 }}>※ ニュースの追加・更新は public/data/news.json を編集してください</p>
       </div>
       <style>{`@media (max-width: 700px) { .news-row { grid-template-columns: 1fr !important; gap: 8px !important; padding: 20px 24px !important; } }`}</style>
     </section>

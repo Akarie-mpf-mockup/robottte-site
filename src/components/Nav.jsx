@@ -34,15 +34,12 @@ export default function Nav() {
           transition: 'all 0.4s ease',
         }}>
 
-        {/* ロゴ: Horizontal Set を object-fit でトリミング */}
         <a href="#" style={{ display: 'flex', alignItems: 'center' }}>
-          <div style={{ width: 140, height: 40, overflow: 'hidden', position: 'relative', flexShrink: 0 }}>
-            <img
-              src="/images/robottte納品_Horizontal Set.png"
-              alt="robottte"
-              style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'left center' }}
-            />
-          </div>
+          <img
+            src="/images/robottte納品_Horizontal Set.png"
+            alt="robottte"
+            style={{ height: 56, width: 56, objectFit: 'contain' }}
+          />
         </a>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 36 }} className="nav-desktop">
