@@ -17,21 +17,6 @@ export default function Products() {
           <p className="label">Products</p>
           <h2 className="section-title" style={{ marginBottom: 32 }}>応募前 → 選考中 → 入社後</h2>
 
-          {/* Philosophy block */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, maxWidth: 900, marginBottom: 0 }} className="philosophy-grid">
-            <div style={{ padding: '32px 36px', background: 'var(--bg2)', borderRadius: 'var(--radius)', borderLeft: '3px solid var(--accent)' }}>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>ツールは手段、自走が目的</p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
-                AIやシステムはあくまでツールのひとつです。大切なのはその使い方——全自動なのか、半自動なのか、手作業なのか。人とシステムの役割分担を丁寧に設計することが、採用の質や定着率につながると考えています。robottteは「企業が自走できる状態」をゴールに、後方から支援していきたいと思っています。
-              </p>
-            </div>
-            <div style={{ padding: '32px 36px', background: 'var(--bg2)', borderRadius: 'var(--radius)', borderLeft: '3px solid rgba(0,160,232,0.4)' }}>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>持続可能なモデルを選ぶ</p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
-                人口減少が続く社会で、高単価・高回転のサービスは長続きしにくいと感じています。robottteは、お客様が長く、無理なく使い続けられることを大切にしながら設計していきたいと考えています。ハビタブルゾーンを広げるためには、提供する側も持続可能でなければならないと思っています。
-              </p>
-            </div>
-          </div>
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 56 }} className="products-grid">
@@ -64,7 +49,6 @@ export default function Products() {
       </div>
       <style>{`
         @media (max-width: 900px) { .products-grid { grid-template-columns: 1fr !important; } }
-        @media (max-width: 760px) { .philosophy-grid { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
   )

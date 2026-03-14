@@ -22,6 +22,23 @@ export default function Why() {
           </p>
         </motion.div>
 
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 48 }} className="philosophy-grid">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.15 }}
+            style={{ padding: '32px 36px', background: 'var(--surface)', borderRadius: 'var(--radius)', borderLeft: '3px solid var(--accent)', boxShadow: 'var(--shadow)' }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>ツールは手段、自走が目的</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
+              AIやシステムはあくまでツールのひとつです。大切なのはその使い方——全自動なのか、半自動なのか、手作業なのか。人とシステムの役割分担を丁寧に設計することが、採用の質や定着率につながると考えています。robottteは「企業が自走できる状態」をゴールに、後方から支援していきたいと思っています。
+            </p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.27 }}
+            style={{ padding: '32px 36px', background: 'var(--surface)', borderRadius: 'var(--radius)', borderLeft: '3px solid rgba(0,160,232,0.4)', boxShadow: 'var(--shadow)' }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>持続可能なモデルを選ぶ</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
+              人口減少が続く社会で、高単価・高回転のサービスは長続きしにくいと感じています。robottteは、お客様が長く、無理なく使い続けられることを大切にしながら設計していきたいと考えています。ハビタブルゾーンを広げるためには、提供する側も持続可能でなければならないと思っています。
+            </p>
+          </motion.div>
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 72 }} className="problem-grid">
           {problems.map((p, i) => (
             <motion.div key={i}
@@ -53,7 +70,10 @@ export default function Why() {
           ))}
         </motion.div>
       </div>
-      <style>{`@media (max-width: 860px) { .problem-grid { grid-template-columns: 1fr !important; } }`}</style>
+      <style>{`
+        @media (max-width: 860px) { .problem-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 760px) { .philosophy-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
   )
 }
