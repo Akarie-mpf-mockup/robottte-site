@@ -33,9 +33,15 @@ export default function Nav() {
           transition: 'all 0.4s ease',
         }}>
 
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img src="/images/正方形logo.jpg" alt="robottte" style={{ width: 32, height: 32, borderRadius: 6 }} />
-          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.03em', color: 'var(--text)' }}>robottte</span>
+        {/* ロゴ: Horizontal Set を object-fit でトリミング */}
+        <a href="#" style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ width: 140, height: 40, overflow: 'hidden', position: 'relative', flexShrink: 0 }}>
+            <img
+              src="/images/robottte納品_Horizontal Set.png"
+              alt="robottte"
+              style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'left center' }}
+            />
+          </div>
         </a>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 36 }} className="nav-desktop">

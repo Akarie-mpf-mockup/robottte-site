@@ -1,73 +1,67 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 
-function PlanetVisual() {
+function PlanetSVG({ size = 460 }) {
+  const cx = size / 2
+  const cy = size / 2
+  const r = size * 0.239   // ~110 at 460
+  const rx1 = size * 0.435 // outer ring rx
+  const ry1 = size * 0.109 // outer ring ry
+  const rx2 = size * 0.352 // inner ring rx
+  const ry2 = size * 0.087 // inner ring ry
+  const moon1y = cy - r - size * 0.083 // outer orbit
+  const moon2y = cy - r - size * 0.101 // inner orbit
+
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="pg" cx="37%" cy="30%" r="65%">
+          <stop offset="0%" stopColor="#D0F0FF" />
+          <stop offset="22%" stopColor="#50C0F0" />
+          <stop offset="52%" stopColor="#0080C0" />
+          <stop offset="100%" stopColor="#001E3C" />
+        </radialGradient>
+        <radialGradient id="gw" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(0,160,232,0.20)" />
+          <stop offset="100%" stopColor="rgba(0,160,232,0)" />
+        </radialGradient>
+      </defs>
+      <circle cx={cx} cy={cy} r={size * 0.45} fill="url(#gw)" />
+      {/* Back rings */}
+      <ellipse cx={cx} cy={cy} rx={rx1} ry={ry1} stroke="rgba(0,160,232,0.11)" strokeWidth="1.2" />
+      <ellipse cx={cx} cy={cy} rx={rx2} ry={ry2} stroke="rgba(0,160,232,0.17)" strokeWidth="1.5" />
+      {/* Planet */}
+      <circle cx={cx} cy={cy} r={r} fill="url(#pg)" />
+      {/* Atmosphere */}
+      <circle cx={cx} cy={cy} r={r + size * 0.01} fill="none" stroke="rgba(80,200,255,0.11)" strokeWidth={size * 0.02} />
+      {/* Highlight */}
+      <ellipse cx={cx - r * 0.27} cy={cy - r * 0.23} rx={r * 0.25} ry={r * 0.15} fill="rgba(255,255,255,0.10)" transform={`rotate(-28 ${cx - r * 0.27} ${cy - r * 0.23})`} />
+      {/* Cloud bands */}
+      <ellipse cx={cx} cy={cy + r * 0.2} rx={r * 0.73} ry={r * 0.07} fill="rgba(255,255,255,0.04)" />
+      {/* Front arcs */}
+      <path d={`M ${cx - rx1} ${cy} A ${rx1} ${ry1} 0 0 0 ${cx + rx1} ${cy}`} stroke="rgba(0,160,232,0.15)" strokeWidth="1.2" fill="none" />
+      <path d={`M ${cx - rx2} ${cy} A ${rx2} ${ry2} 0 0 0 ${cx + rx2} ${cy}`} stroke="rgba(0,160,232,0.22)" strokeWidth="1.5" fill="none" />
+      {/* Moon 1 — clockwise */}
+      <motion.g animate={{ rotate: [0, 360] }} transition={{ duration: 13, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: `${cx}px ${cy}px` }}>
+        <circle cx={cx} cy={moon1y} r={size * 0.015} fill="rgba(0,160,232,0.22)" />
+        <circle cx={cx} cy={moon1y} r={size * 0.010} fill="#00A0E8" />
+      </motion.g>
+      {/* Moon 2 — counter-clockwise */}
+      <motion.g animate={{ rotate: [360, 0] }} transition={{ duration: 21, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: `${cx}px ${cy}px` }}>
+        <circle cx={cx} cy={moon2y} r={size * 0.008} fill="rgba(100,200,255,0.65)" />
+      </motion.g>
+    </svg>
+  )
+}
+
+function PlanetVisual({ size = 460 }) {
   return (
     <motion.div
-      className="hero-planet"
-      initial={{ opacity: 0, scale: 0.8, x: 40 }}
+      initial={{ opacity: 0, scale: 0.8, x: 30 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       transition={{ duration: 1.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-
-      <motion.div
-        animate={{ y: [0, -24, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}>
-
-        <svg width="460" height="460" viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="planetGrad" cx="37%" cy="30%" r="65%">
-              <stop offset="0%" stopColor="#D0F0FF" />
-              <stop offset="22%" stopColor="#50C0F0" />
-              <stop offset="52%" stopColor="#0080C0" />
-              <stop offset="100%" stopColor="#001E3C" />
-            </radialGradient>
-            <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="rgba(0,160,232,0.20)" />
-              <stop offset="100%" stopColor="rgba(0,160,232,0)" />
-            </radialGradient>
-          </defs>
-
-          {/* Outer glow */}
-          <circle cx="230" cy="230" r="210" fill="url(#glowGrad)" />
-
-          {/* Back half of orbital rings */}
-          <ellipse cx="230" cy="230" rx="200" ry="50" stroke="rgba(0,160,232,0.11)" strokeWidth="1.2" />
-          <ellipse cx="230" cy="230" rx="162" ry="40" stroke="rgba(0,160,232,0.17)" strokeWidth="1.5" />
-
-          {/* Planet */}
-          <circle cx="230" cy="230" r="110" fill="url(#planetGrad)" />
-
-          {/* Atmosphere rim */}
-          <circle cx="230" cy="230" r="115" fill="none" stroke="rgba(80,200,255,0.12)" strokeWidth="9" />
-
-          {/* Surface highlight */}
-          <ellipse cx="200" cy="205" rx="28" ry="16" fill="rgba(255,255,255,0.10)" transform="rotate(-28 200 205)" />
-
-          {/* Subtle cloud bands */}
-          <ellipse cx="230" cy="252" rx="80" ry="8" fill="rgba(255,255,255,0.04)" />
-          <ellipse cx="230" cy="218" rx="60" ry="5" fill="rgba(255,255,255,0.03)" />
-
-          {/* Front half of orbital rings (drawn after planet so they appear in front) */}
-          <path d="M 30 230 A 200 50 0 0 0 430 230" stroke="rgba(0,160,232,0.15)" strokeWidth="1.2" fill="none" />
-          <path d="M 68 230 A 162 40 0 0 0 392 230" stroke="rgba(0,160,232,0.22)" strokeWidth="1.5" fill="none" />
-
-          {/* Orbiting moon 1 — rotates clockwise */}
-          <motion.g
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 13, repeat: Infinity, ease: 'linear' }}
-            style={{ transformOrigin: '230px 230px' }}>
-            <circle cx="230" cy="190" r="7" fill="rgba(0,160,232,0.22)" />
-            <circle cx="230" cy="190" r="4.5" fill="#00A0E8" />
-          </motion.g>
-
-          {/* Orbiting moon 2 — rotates counter-clockwise, different orbit */}
-          <motion.g
-            animate={{ rotate: [360, 0] }}
-            transition={{ duration: 21, repeat: Infinity, ease: 'linear' }}
-            style={{ transformOrigin: '230px 230px' }}>
-            <circle cx="230" cy="184" r="3.5" fill="rgba(100,200,255,0.65)" />
-          </motion.g>
-        </svg>
+      <motion.div animate={{ y: [0, -22, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}>
+        <PlanetSVG size={size} />
       </motion.div>
     </motion.div>
   )
@@ -95,9 +89,9 @@ export default function Hero() {
     <section ref={ref} style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
       <HeroBg />
 
+      {/* ── Desktop layout: text left / planet right ── */}
       <div className="container hero-inner" style={{ position: 'relative', zIndex: 10, display: 'flex', alignItems: 'center', minHeight: '100vh', paddingTop: 'var(--nav-h)', gap: 48 }}>
 
-        {/* Text content */}
         <motion.div style={{ flex: 1, minWidth: 0, y, opacity }} variants={containerAnim} initial="hidden" animate="show">
 
           <motion.p variants={itemAnim} style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -105,9 +99,10 @@ export default function Hero() {
             Habitable Zone — HR Technology
           </motion.p>
 
-          <motion.h1 variants={itemAnim} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: 'clamp(2.6rem, 5vw, 4.8rem)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: 12, color: 'var(--text)' }}>
-            ハビタブルゾーンを、<br />
-            <span style={{ color: 'var(--accent)' }}>拡げる。</span>
+          {/* 見出し: 各行を display:block + white-space:nowrap で折り返しを防ぐ */}
+          <motion.h1 variants={itemAnim} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: 'clamp(1.9rem, 4.8vw, 4.8rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.03em', marginBottom: 12, color: 'var(--text)' }}>
+            <span style={{ display: 'block', whiteSpace: 'nowrap' }}>ハビタブルゾーンを、</span>
+            <span style={{ display: 'block', color: 'var(--accent)' }}>拡げる。</span>
           </motion.h1>
 
           <motion.p variants={itemAnim} style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.82rem', letterSpacing: '0.10em', color: 'var(--text-dim)', marginBottom: 28, fontWeight: 400 }}>
@@ -133,7 +128,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={itemAnim} style={{ display: 'flex', gap: 48, marginTop: 64, paddingTop: 40, borderTop: '1px solid rgba(0,160,232,0.12)' }}>
-            {[['3,000+', '導入事業所'], ['98.02%', '継続率'], ['24/365', '自動対応']].map(([n, l]) => (
+            {[['3,000+', '導入事業所'], ['98.02%', '継続率'], ['24/365', '年中無休対応']].map(([n, l]) => (
               <div key={l}>
                 <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.3rem)', fontWeight: 800, color: 'var(--accent)', lineHeight: 1, marginBottom: 6, letterSpacing: '-0.03em' }}>{n}</div>
                 <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.75rem', fontWeight: 500, color: 'var(--text-dim)' }}>{l}</div>
@@ -142,10 +137,15 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Planet */}
-        <div className="hero-planet-wrap" style={{ flexShrink: 0 }}>
-          <PlanetVisual />
+        {/* Desktop planet */}
+        <div className="hero-planet-desktop" style={{ flexShrink: 0 }}>
+          <PlanetVisual size={460} />
         </div>
+      </div>
+
+      {/* ── Mobile planet: テキスト下に中央表示 ── */}
+      <div className="hero-planet-mobile" style={{ display: 'none', justifyContent: 'center', paddingBottom: 60, position: 'relative', zIndex: 10 }}>
+        <PlanetVisual size={260} />
       </div>
 
       {/* Scroll indicator */}
@@ -156,8 +156,14 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
-        @media (max-width: 960px) { .hero-planet-wrap { display: none !important; } }
-        @media (max-width: 600px) { .hero-inner { padding-bottom: 80px; } }
+        @media (max-width: 960px) {
+          .hero-planet-desktop { display: none !important; }
+          .hero-planet-mobile { display: flex !important; }
+          .hero-inner { padding-bottom: 20px; }
+        }
+        @media (max-width: 600px) {
+          .hero-inner { min-height: calc(100vh - 60px); }
+        }
       `}</style>
     </section>
   )
