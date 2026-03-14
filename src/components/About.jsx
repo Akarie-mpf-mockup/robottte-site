@@ -27,7 +27,8 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="about" className="section" style={{ background: 'var(--bg2)' }}>
+    <section id="about" className="section" style={{ background: 'var(--bg2)', position: 'relative', overflow: 'hidden' }}>
+      <img src="/images/robottte納品_slim.png" alt="" aria-hidden="true" style={{ position: 'absolute', bottom: '-60px', right: '-60px', width: 340, height: 340, objectFit: 'contain', opacity: 0.06, pointerEvents: 'none', userSelect: 'none' }} />
       <div className="container">
         <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 72 }}>
           <p className="label">Company</p>
