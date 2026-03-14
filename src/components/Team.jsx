@@ -42,7 +42,7 @@ const pillarColors = {
   '現場理解': { bg: 'rgba(0,110,163,0.08)', color: '#006EA3', border: 'rgba(0,110,163,0.25)' },
 }
 
-function Avatar({ name, photo, size = 100 }) {
+function Avatar({ name, nameEn, photo, size = 100 }) {
   if (photo) {
     return (
       <div style={{ width: size, height: size, borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--accent-light)', background: 'var(--bg2)', flexShrink: 0 }}>
@@ -50,10 +50,14 @@ function Avatar({ name, photo, size = 100 }) {
       </div>
     )
   }
+  // 英語名の頭文字2文字 (例: "Airi Shimizu" → "AS")
+  const initials = nameEn
+    ? nameEn.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+    : name.slice(0, 1)
   return (
     <div style={{ width: size, height: size, borderRadius: '50%', background: 'var(--accent-light)', border: '3px solid rgba(0,160,232,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: size * 0.36, fontWeight: 700, color: 'var(--accent)' }}>
-        {name.replace(/\s/g, '').slice(0, 1)}
+      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: size * 0.30, fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.05em' }}>
+        {initials}
       </span>
     </div>
   )
@@ -103,7 +107,7 @@ export default function Team() {
 
                 {/* カードトップ: アバター + 名前 */}
                 <div style={{ padding: '36px 36px 28px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderBottom: '1px solid var(--border-light)' }}>
-                  <Avatar name={m.name} photo={m.photo} size={96} />
+                  <Avatar name={m.name} nameEn={m.nameEn} photo={m.photo} size={96} />
                   <div style={{ marginTop: 20 }}>
                     <div style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.name}</div>
                     <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: 14 }}>{m.nameEn}</div>
