@@ -22,7 +22,7 @@ export default function News() {
               style={{ display: 'grid', gridTemplateColumns: '140px 120px 1fr auto', alignItems: 'center', gap: 28, padding: '22px 32px', borderBottom: i < news.length - 1 ? '1px solid var(--border-light)' : 'none' }}
               className="news-row">
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 500, color: 'var(--text-dim)' }}>{item.date}</span>
-              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '4px 12px', borderRadius: 6, background: 'var(--accent-light)', color: 'var(--accent)', whiteSpace: 'nowrap', width: 'fit-content' }}>{item.category}</span>
+              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '4px 12px', borderRadius: 6, background: 'var(--accent-light)', color: 'var(--accent)', whiteSpace: 'nowrap', width: 'fit-content', justifySelf: 'center' }}>{item.category}</span>
               <span style={{ fontSize: '0.92rem', color: 'var(--text)', fontWeight: 400 }}>{item.title}</span>
               {item.url
                 ? <a href={item.url} target="_blank" rel="noopener" style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 600, color: 'var(--accent)', whiteSpace: 'nowrap' }}>詳細 →</a>

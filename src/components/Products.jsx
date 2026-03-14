@@ -2,9 +2,9 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const products = [
-  { phase: '応募前', num: '01', name: 'HR Chat', color: '#00A0E8', desc: '応募前の疑問・不安にAIが24時間対応。応募意欲を高め、条件のミスマッチを事前に解消する。企業担当者の負担を減らしながら、応募者との丁寧な関係構築を支援する。', features: ['24時間365日対応', '応募前の疑問を即解決', 'FAQ自動学習・更新'], href: '#contact' },
-  { phase: '選考中', num: '02', name: 'HR Monster', color: '#0080C0', desc: '応募受付から面接調整まで、人とシステムの役割分担を設計しながら業務を効率化。条件分岐で適切な候補者を面接へつなぎ、複数媒体の応募を一元管理する。', features: ['応募対応・面接調整支援', '条件分岐スクリーニング', '複数媒体一元管理'], href: 'https://hr-monster.io/' },
-  { phase: '入社後', num: '03', name: 'Talent Keeper', color: '#006EA3', desc: '入社後フォローを継続的にサポートし、離職予兆を早期に把握。スタッフが自律的に定着できる環境づくりを、企業と一緒に考える。', features: ['入社後フォロー継続支援', '離職予兆の早期把握', 'エンゲージメント可視化'], href: '#contact' },
+  { phase: '応募前', num: '01', name: 'HR Chat', color: '#00A0E8', desc: '応募前の疑問・不安にAIが24時間対応します。応募意欲を高め、条件のミスマッチを事前に解消。企業担当者の負担を減らしながら、応募者との丁寧な関係構築を支援します。', features: ['24時間365日対応', '応募前の疑問を即解決', 'FAQ自動学習・更新'], href: '#contact' },
+  { phase: '選考中', num: '02', name: 'HR Monster', color: '#0080C0', desc: '応募受付から面接調整まで、人とシステムの役割分担を設計しながら業務を効率化します。条件分岐で適切な候補者を面接へつなぎ、複数媒体の応募を一元管理します。', features: ['応募対応・面接調整支援', '条件分岐スクリーニング', '複数媒体一元管理'], href: 'https://hr-monster.io/' },
+  { phase: '入社後', num: '03', name: 'Talent Keeper', color: '#006EA3', desc: '入社後フォローを継続的にサポートし、離職予兆を早期に把握します。スタッフが自律的に定着できる環境づくりを、企業と一緒に考えていきます。', features: ['入社後フォロー継続支援', '離職予兆の早期把握', 'エンゲージメント可視化'], href: '#contact' },
 ]
 
 export default function Products() {
