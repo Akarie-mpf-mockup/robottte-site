@@ -1,18 +1,25 @@
 export default function Footer() {
+  const nav = [['Philosophy','#why'],['Products','#products'],['Results','#results'],['News','#news'],['Careers','#careers'],['Contact','#contact']]
   return (
-    <footer style={{ borderTop: '1px solid var(--border)', padding: '40px 0', background: 'var(--bg)' }}>
-      <div style={{ maxWidth: 1120, margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 16 }}>
-          <a href="#" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.2rem', background: 'linear-gradient(135deg, #4f7cff, #7c5cfc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>robottte</a>
+    <footer style={{ borderTop: '1px solid var(--border)', padding: '48px 0', background: 'var(--bg)' }}>
+      <div className="container">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 48, flexWrap: 'wrap', gap: 32 }}>
+          <div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #fff, rgba(255,255,255,0.6))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: 12 }}>robottte</div>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', letterSpacing: '0.1em', color: 'var(--text-dim)', lineHeight: 1.8 }}>Designing the Habitable Zone<br />for Human Work.</p>
+          </div>
           <nav style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
-            {[['サービス','#services'],['会社概要','#about'],['採用','#team'],['お問い合わせ','#contact']].map(([label, href]) => (
-              <a key={href} href={href} style={{ fontSize: '0.83rem', color: 'var(--text-muted)', transition: 'color 0.2s' }}
-                onMouseEnter={e => e.target.style.color = 'var(--text)'}
-                onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>{label}</a>
+            {nav.map(([label, href]) => (
+              <a key={href} href={href} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--text-dim)', transition: 'color 0.2s' }}
+                onMouseEnter={e => e.target.style.color = 'var(--text-muted)'}
+                onMouseLeave={e => e.target.style.color = 'var(--text-dim)'}>{label}</a>
             ))}
           </nav>
         </div>
-        <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textAlign: 'center' }}>© 2024 robottte Inc. All rights reserved.</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text-dim)' }}>© 2024 robottte Inc. All rights reserved.</p>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text-dim)' }}>Habitable Zone for Human Work.</p>
+        </div>
       </div>
     </footer>
   )
