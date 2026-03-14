@@ -23,7 +23,7 @@ export default function Products() {
           {products.map((p, i) => (
             <motion.div key={p.name}
               initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, boxShadow: '0 16px 48px rgba(0,160,232,0.14)', transition: { duration: 0.25 } }}
+              whileHover={{ y: -10, boxShadow: '0 24px 64px rgba(0,160,232,0.26)', scale: 1.01, transition: { type: 'spring', stiffness: 320, damping: 22 } }}
               style={{ background: 'var(--surface)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius)', borderTop: `3px solid ${p.color}`, padding: '40px 32px', boxShadow: 'var(--shadow)', transition: 'box-shadow 0.3s' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
                 <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.06em', padding: '5px 14px', borderRadius: 6, background: `${p.color}18`, color: p.color }}>{p.phase}</span>

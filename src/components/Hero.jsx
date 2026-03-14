@@ -70,14 +70,25 @@ function PlanetVisual({ size = 460 }) {
 function HeroBg() {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(155deg, #FFFFFF 0%, #EDF7FD 55%, #F4F8FB 100%)' }} />
-      <div style={{ position: 'absolute', bottom: '-8%', left: '-6%', width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,160,232,0.05) 0%, transparent 70%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(145deg, #FFFFFF 0%, #DCF2FD 40%, #EEF7FB 70%, #F8FCFE 100%)' }} />
+      <div style={{ position: 'absolute', bottom: '-10%', left: '-8%', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,160,232,0.10) 0%, transparent 65%)' }} />
+      <div style={{ position: 'absolute', top: '5%', right: '15%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,160,232,0.06) 0%, transparent 70%)' }} />
+      <motion.div
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+        style={{ position: 'absolute', top: '50%', left: '50%', width: 900, height: 900, marginLeft: -450, marginTop: -450, border: '1px solid rgba(0,160,232,0.04)', borderRadius: '50%' }}
+      />
+      <motion.div
+        animate={{ rotate: [360, 0] }}
+        transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+        style={{ position: 'absolute', top: '50%', left: '50%', width: 600, height: 600, marginLeft: -300, marginTop: -300, border: '1px solid rgba(0,160,232,0.06)', borderRadius: '50%' }}
+      />
     </div>
   )
 }
 
-const containerAnim = { hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } } }
-const itemAnim = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }
+const containerAnim = { hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }
+const itemAnim = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }
 
 export default function Hero() {
   const ref = useRef(null)
@@ -97,7 +108,7 @@ export default function Hero() {
           {/* 見出し: 各行を display:block + white-space:nowrap で折り返しを防ぐ */}
           <motion.h1 variants={itemAnim} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: 'clamp(1.9rem, 4.8vw, 4.8rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.03em', marginBottom: 12, color: 'var(--text)' }}>
             <span style={{ display: 'block', whiteSpace: 'nowrap' }}>ハビタブルゾーンを、</span>
-            <span style={{ display: 'block', color: 'var(--accent)' }}>拡げる。</span>
+            <span className="gradient-text" style={{ display: 'block' }}>拡げる。</span>
           </motion.h1>
 
           <motion.p variants={itemAnim} style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.82rem', letterSpacing: '0.10em', color: 'var(--text-dim)', marginBottom: 28, fontWeight: 400 }}>
@@ -110,8 +121,9 @@ export default function Hero() {
 
           <motion.div variants={itemAnim} style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             <motion.a href="#products"
-              whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
-              style={{ display: 'inline-block', padding: '14px 36px', borderRadius: 10, background: 'var(--accent)', color: '#fff', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '0.9rem', boxShadow: '0 4px 24px rgba(0,160,232,0.35)', letterSpacing: '0.02em' }}>
+              whileHover={{ scale: 1.05, y: -3, boxShadow: '0 8px 40px rgba(0,160,232,0.55)' }} whileTap={{ scale: 0.97 }}
+              style={{ display: 'inline-block', padding: '14px 36px', borderRadius: 10, background: 'linear-gradient(130deg, #00A0E8 0%, #0070C8 100%)', color: '#fff', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '0.9rem', boxShadow: '0 4px 28px rgba(0,160,232,0.45)', letterSpacing: '0.02em', position: 'relative', overflow: 'hidden' }}>
+              <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)', animation: 'shimmer 2.8s infinite', pointerEvents: 'none' }} />
               Products →
             </motion.a>
             <motion.a href="#why"

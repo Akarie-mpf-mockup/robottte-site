@@ -47,7 +47,7 @@ export default function Results() {
           {stats.map((s, i) => (
             <motion.div key={s.label}
               initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: i * 0.12 }}
-              style={{ padding: '48px 40px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', textAlign: 'center', boxShadow: 'var(--shadow)' }}>
+              style={{ padding: '48px 40px', background: 'linear-gradient(160deg, #fff 60%, #EDF7FD 100%)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', borderTop: '3px solid var(--accent)', textAlign: 'center', boxShadow: 'var(--shadow)' }}>
               <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(2.4rem, 4vw, 3.4rem)', fontWeight: 800, color: 'var(--accent)', lineHeight: 1, marginBottom: 12, letterSpacing: '-0.03em' }}>
                 {s.end !== null
                   ? <CountUp end={s.end} decimals={s.decimals} suffix={s.suffix} inView={inView} />
