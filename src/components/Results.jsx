@@ -30,7 +30,6 @@ const voices = [
   { text: '応募者が応募に至るタイミングで逃さずサポートしてくれる。夜間の応募にも即対応できるようになった。', company: '介護福祉事業者', industry: '介護' },
   { text: '日程調整やロボでの回答が応募者管理画面に自動でアップされる流れが当たり前になった。採用担当の工数が劇的に削減された。', company: '医療法人', industry: '医療' },
 ]
-const industries = ['介護福祉', '医療', '保育', '派遣・紹介', '飲食・宿泊', '清掃業', '物流', '警備']
 
 export default function Results() {
   const ref = useRef(null)
@@ -77,14 +76,6 @@ export default function Results() {
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: 0.6 }}>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.14em', color: 'var(--text-dim)', marginBottom: 20, textTransform: 'uppercase' }}>Deployment Industries</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-            {industries.map(ind => (
-              <span key={ind} style={{ fontSize: '0.82rem', fontWeight: 500, padding: '7px 18px', border: '1.5px solid var(--border)', color: 'var(--text-muted)', borderRadius: 8, background: 'var(--surface)' }}>{ind}</span>
-            ))}
-          </div>
-        </motion.div>
       </div>
       <style>{`@media (max-width: 860px) { .stats-grid { grid-template-columns: 1fr !important; } .voices-grid { grid-template-columns: 1fr !important; } }`}</style>
     </section>
