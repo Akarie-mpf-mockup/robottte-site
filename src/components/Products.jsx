@@ -2,9 +2,9 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const products = [
-  { phase: '採用前', num: '01', name: 'HR Chat', color: '#00A0E8', desc: '応募前の疑問・不安をAIが24時間対応。応募意欲を高め、条件ミスマッチを事前に解消する。', features: ['24時間365日自動対応', '応募前の疑問を即解決', 'FAQ自動学習'], href: '#contact' },
-  { phase: '選考中', num: '02', name: 'HR Monster', color: '#0080C0', desc: '応募受付から面接調整まで全自動。条件分岐で規定クリア者だけを面接へ。複数媒体の応募を一元管理。', features: ['応募対応・面接自動化', '条件分岐スクリーニング', '複数媒体一元管理'], href: 'https://hr-monster.io/' },
-  { phase: '入社後', num: '03', name: 'Talent Keeper', color: '#006EA3', desc: '入社後フォローを自動化し、離職予兆を早期検知。スタッフの満足度・定着率を継続的に改善する。', features: ['入社後フォロー自動化', '離職予兆の早期検知', 'エンゲージメント可視化'], href: '#contact' },
+  { phase: '応募前', num: '01', name: 'HR Chat', color: '#00A0E8', desc: '応募前の疑問・不安にAIが24時間対応。応募意欲を高め、条件のミスマッチを事前に解消する。企業担当者の負担を減らしながら、応募者との丁寧な関係構築を支援する。', features: ['24時間365日対応', '応募前の疑問を即解決', 'FAQ自動学習・更新'], href: '#contact' },
+  { phase: '選考中', num: '02', name: 'HR Monster', color: '#0080C0', desc: '応募受付から面接調整まで、人とシステムの役割分担を設計しながら業務を効率化。条件分岐で適切な候補者を面接へつなぎ、複数媒体の応募を一元管理する。', features: ['応募対応・面接調整支援', '条件分岐スクリーニング', '複数媒体一元管理'], href: 'https://hr-monster.io/' },
+  { phase: '入社後', num: '03', name: 'Talent Keeper', color: '#006EA3', desc: '入社後フォローを継続的にサポートし、離職予兆を早期に把握。スタッフが自律的に定着できる環境づくりを、企業と一緒に考える。', features: ['入社後フォロー継続支援', '離職予兆の早期把握', 'エンゲージメント可視化'], href: '#contact' },
 ]
 
 export default function Products() {
@@ -15,8 +15,11 @@ export default function Products() {
       <div className="container">
         <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 64 }}>
           <p className="label">Products</p>
-          <h2 className="section-title" style={{ marginBottom: 16 }}>採用前 → 採用中 → 入社後</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 560 }}>3つのプロダクトが一気通貫で連携。「応募 → 就業 → 定着」の全フローを自動化・最適化する。</p>
+          <h2 className="section-title" style={{ marginBottom: 16 }}>応募前 → 選考中 → 入社後</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 620 }}>
+            AIやシステムはあくまでツール。大切なのは「何を自動化し、何を人が担うか」——そのバウンダリー設計こそが、採用の質と定着率を左右する。<br />
+            robottteは高単価・高回転のモデルではなく、企業が自走できるよう後方支援に徹する。
+          </p>
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }} className="products-grid">
