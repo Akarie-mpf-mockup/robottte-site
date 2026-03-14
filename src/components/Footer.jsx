@@ -4,11 +4,14 @@ export default function Footer() {
     <footer style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '56px 0 40px', background: '#0F1923' }}>
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 48, flexWrap: 'wrap', gap: 32 }}>
-          <div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.03em', color: '#fff', marginBottom: 12 }}>robottte</div>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 400, color: 'rgba(255,255,255,0.35)', lineHeight: 1.9, letterSpacing: '0.02em' }}>
-              Designing the Habitable Zone<br />for Human Work.
-            </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <img src="/images/robottte納品_slim.png" alt="robottte" style={{ width: 40, height: 40, objectFit: 'contain' }} />
+            <div>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.3rem', letterSpacing: '-0.03em', color: '#fff', marginBottom: 6 }}>robottte</div>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 400, color: 'rgba(255,255,255,0.35)', lineHeight: 1.9, letterSpacing: '0.02em' }}>
+                Designing the Habitable Zone<br />for Human Work.
+              </p>
+            </div>
           </div>
           <nav style={{ display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
             {nav.map(([label, href]) => (

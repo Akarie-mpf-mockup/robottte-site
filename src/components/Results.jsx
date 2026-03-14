@@ -60,7 +60,10 @@ export default function Results() {
         </div>
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 0.4 }} style={{ marginBottom: 56 }}>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.14em', color: 'var(--text-dim)', marginBottom: 28, textTransform: 'uppercase' }}>Customer Voices</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.14em', color: 'var(--text-dim)', textTransform: 'uppercase', margin: 0 }}>Customer Voices</p>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '3px 12px', background: 'var(--accent-light)', color: 'var(--accent)', borderRadius: 6 }}>HR Monster</span>
+          </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="voices-grid">
             {voices.map((v, i) => (
               <div key={i} style={{ padding: '36px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', borderLeft: '3px solid var(--accent)', boxShadow: 'var(--shadow)' }}>

@@ -5,7 +5,8 @@ export default function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   return (
-    <section id="contact" className="section" style={{ background: 'linear-gradient(160deg, #EDF6FC 0%, #F4F8FB 100%)' }}>
+    <section id="contact" className="section" style={{ background: 'linear-gradient(160deg, #EDF6FC 0%, #F4F8FB 100%)', position: 'relative', overflow: 'hidden' }}>
+      <img src="/images/robottte納品_slim.png" alt="" aria-hidden="true" style={{ position: 'absolute', bottom: '-60px', right: '-60px', width: 340, height: 340, objectFit: 'contain', opacity: 0.06, pointerEvents: 'none', userSelect: 'none' }} />
       <div className="container">
         <motion.div ref={ref} initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }}>
           <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center', padding: '80px 56px', background: 'rgba(255,255,255,0.85)', borderRadius: 20, border: '1px solid rgba(0,160,232,0.15)', boxShadow: '0 16px 64px rgba(0,160,232,0.10)', backdropFilter: 'blur(8px)', position: 'relative', overflow: 'hidden' }}>
