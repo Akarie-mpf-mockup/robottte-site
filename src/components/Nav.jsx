@@ -13,6 +13,7 @@ export default function Nav() {
     { label: 'Philosophy', href: '#why' },
     { label: 'Products', href: '#products' },
     { label: 'Results', href: '#results' },
+    { label: 'Team', href: '#team' },
     { label: 'News', href: '#news' },
     { label: 'Careers', href: '#careers' },
   ]
