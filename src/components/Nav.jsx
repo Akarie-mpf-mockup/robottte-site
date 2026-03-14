@@ -14,6 +14,7 @@ export default function Nav() {
     { label: 'Products', href: '#products' },
     { label: 'Results', href: '#results' },
     { label: 'Team', href: '#team' },
+    { label: 'Company', href: '#about' },
     { label: 'News', href: '#news' },
     { label: 'Careers', href: '#careers' },
   ]

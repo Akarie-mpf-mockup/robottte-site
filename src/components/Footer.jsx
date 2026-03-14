@@ -1,5 +1,5 @@
 export default function Footer() {
-  const nav = [['Philosophy','#why'],['Products','#products'],['Results','#results'],['Team','#team'],['News','#news'],['Careers','#careers'],['Contact','#contact']]
+  const nav = [['Philosophy','#why'],['Products','#products'],['Results','#results'],['Team','#team'],['Company','#about'],['News','#news'],['Careers','#careers'],['Contact','#contact']]
   return (
     <footer style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '56px 0 40px', background: '#0F1923' }}>
       <div className="container">
