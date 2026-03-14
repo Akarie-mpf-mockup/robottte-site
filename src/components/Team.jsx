@@ -25,7 +25,7 @@ const members = [
   },
   {
     name: '林 和',
-    nameEn: 'Kazu Hayashi',
+    nameEn: null,
     role: 'Customer Success',
     pillar: '現場理解',
     pillarDesc: 'Field',
@@ -50,10 +50,10 @@ function Avatar({ name, nameEn, photo, size = 100 }) {
       </div>
     )
   }
-  // 英語名の頭文字2文字 (例: "Airi Shimizu" → "AS")
+  // 英語名があれば頭文字2文字 (例: "Airi Shimizu" → "AS")、なければ姓の一文字
   const initials = nameEn
     ? nameEn.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
-    : name.slice(0, 1)
+    : name.trim().slice(0, 1)
   return (
     <div style={{ width: size, height: size, borderRadius: '50%', background: 'var(--accent-light)', border: '3px solid rgba(0,160,232,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
       <span style={{ fontFamily: 'Inter, sans-serif', fontSize: size * 0.30, fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.05em' }}>
@@ -110,7 +110,7 @@ export default function Team() {
                   <Avatar name={m.name} nameEn={m.nameEn} photo={m.photo} size={96} />
                   <div style={{ marginTop: 20 }}>
                     <div style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.name}</div>
-                    <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: 14 }}>{m.nameEn}</div>
+                    {m.nameEn && <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: 14 }}>{m.nameEn}</div>}
                     <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
                       <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '4px 14px', borderRadius: 6, background: 'var(--bg2)', color: 'var(--text-muted)', border: '1px solid var(--border-light)' }}>{m.role}</span>
                       <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 700, padding: '4px 14px', borderRadius: 6, background: c.bg, color: c.color, border: `1px solid ${c.border}` }}>{m.pillar}</span>
