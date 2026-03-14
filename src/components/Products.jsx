@@ -3,7 +3,7 @@ import { useRef } from 'react'
 
 const products = [
   { phase: '採用前', num: '01', name: 'HR Chat', color: '#00A0E8', desc: '応募前の疑問・不安をAIが24時間対応。応募意欲を高め、条件ミスマッチを事前に解消する。', features: ['24時間365日自動対応', '応募前の疑問を即解決', 'FAQ自動学習'], href: '#contact' },
-  { phase: '採用中', num: '02', name: 'HR Monster', color: '#0080C0', desc: '応募受付から面接調整まで全自動。条件分岐で規定クリア者だけを面接へ。複数媒体の応募を一元管理。', features: ['応募対応・面接自動化', '条件分岐スクリーニング', '複数媒体一元管理'], href: 'https://hr-monster.io/' },
+  { phase: '選考中', num: '02', name: 'HR Monster', color: '#0080C0', desc: '応募受付から面接調整まで全自動。条件分岐で規定クリア者だけを面接へ。複数媒体の応募を一元管理。', features: ['応募対応・面接自動化', '条件分岐スクリーニング', '複数媒体一元管理'], href: 'https://hr-monster.io/' },
   { phase: '入社後', num: '03', name: 'Talent Keeper', color: '#006EA3', desc: '入社後フォローを自動化し、離職予兆を早期検知。スタッフの満足度・定着率を継続的に改善する。', features: ['入社後フォロー自動化', '離職予兆の早期検知', 'エンゲージメント可視化'], href: '#contact' },
 ]
 

@@ -45,17 +45,17 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1 variants={itemAnim} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: 'clamp(2.8rem, 7vw, 5.6rem)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: 10, color: 'var(--text)' }}>
-          人が壊れない<br />
-          <span style={{ color: 'var(--accent)' }}>労働圏を設計する。</span>
+          ハビタブルゾーンを、<br />
+          <span style={{ color: 'var(--accent)' }}>拡げる。</span>
         </motion.h1>
 
         <motion.p variants={itemAnim} style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.85rem', letterSpacing: '0.12em', color: 'var(--text-dim)', marginBottom: 36, fontWeight: 400 }}>
-          Human Work Needs a Habitable Zone.
+          Expanding the Habitable Zone for Human Work.
         </motion.p>
 
-        <motion.p variants={itemAnim} style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 2.1, maxWidth: 540, margin: '0 auto 52px' }}>
-          天文学では「生命が存在できる領域」をHabitable Zoneと呼ぶ。<br />
-          robottteは、AIによって人が持続可能に働ける社会領域を設計する。
+        <motion.p variants={itemAnim} style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 2.1, maxWidth: 560, margin: '0 auto 52px' }}>
+          人口減少が進む社会において、「人が働き、生き続けられる空間」を増やす。<br />
+          AIの力で、持続可能な社会構造を創造する。
         </motion.p>
 
         <motion.div variants={itemAnim} style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
