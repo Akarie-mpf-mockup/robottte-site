@@ -71,7 +71,7 @@ export default function Nav() {
             style={{ position: 'fixed', inset: 0, background: 'rgba(255,255,255,0.98)', zIndex: 199, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 32 }}
             onClick={() => setOpen(false)}>
             {[...links, { label: 'Contact', href: '#contact' }].map(l => (
-              <a key={l.href} href={l.href} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: 'var(--text)' }}>{l.label}</a>
+              <a key={l.href} href={l.href} style={{ fontFamily: 'Inter, M PLUS 1p, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: 'var(--text)' }}>{l.label}</a>
             ))}
           </motion.div>
         )}

@@ -39,7 +39,7 @@ export default function Why() {
           {industries.map((ind, i) => (
             <motion.span key={ind}
               initial={{ opacity: 0, scale: 0.9 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ delay: 0.7 + i * 0.06 }}
-              style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '0.8rem', fontWeight: 500, padding: '6px 18px', border: '1.5px solid var(--border)', borderRadius: 8, color: 'var(--text-muted)', background: 'var(--surface)' }}>
+              style={{ fontFamily: 'Inter, M PLUS 1p, sans-serif', fontSize: '0.8rem', fontWeight: 500, padding: '6px 18px', border: '1.5px solid var(--border)', borderRadius: 8, color: 'var(--text-muted)', background: 'var(--surface)' }}>
               {ind}
             </motion.span>
           ))}

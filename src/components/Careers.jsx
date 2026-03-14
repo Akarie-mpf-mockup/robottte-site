@@ -25,7 +25,7 @@ export default function Careers() {
               className="job-row">
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-                  <h3 style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)' }}>{job.title}</h3>
+                  <h3 style={{ fontFamily: 'Inter, M PLUS 1p, sans-serif', fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)' }}>{job.title}</h3>
                   <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '4px 12px', background: 'var(--accent-light)', color: 'var(--accent)', borderRadius: 6 }}>{job.type}</span>
                 </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.8, marginBottom: 10 }}>{job.description}</p>
