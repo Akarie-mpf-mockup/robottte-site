@@ -1,11 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-const problems = [
-  { time: '23:47', scene: '夜、応募が来ても誰も対応できない。', impact: '機会損失' },
-  { time: '14:23', scene: '面接調整だけで、採用担当の1日が終わる。', impact: '工数浪費' },
-  { time: '—', scene: '辞めた理由を、会社は誰も知らない。', impact: '構造的盲点' },
-]
 const industries = ['医療', '介護', '保育', '物流', '飲食', '清掃/ビル管理']
 
 export default function Why() {
@@ -16,7 +11,7 @@ export default function Why() {
       <div className="container">
         <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }}>
           <p className="label">Philosophy</p>
-          <h2 className="section-title" style={{ marginBottom: 16, maxWidth: 640 }}>エッセンシャルワーカーの働く現場を、<br />持続可能にする。</h2>
+          <h2 className="section-title" style={{ marginBottom: 16, maxWidth: 640 }}>エッセンシャルワーカーの働く現場を、持続可能にする。</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 560, marginBottom: 64 }}>
             労働集約産業が直面する構造課題——人手不足、高離職率、多拠点管理——は、現場の努力だけでは乗り越えにくい現実があります。robottteはテクノロジーを活用しながら、その構造ごとアプローチしていきたいと考えています。
           </p>
@@ -25,38 +20,18 @@ export default function Why() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 48 }} className="philosophy-grid">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.15 }}
             style={{ padding: '32px 36px', background: 'var(--surface)', borderRadius: 'var(--radius)', borderLeft: '3px solid var(--accent)', boxShadow: 'var(--shadow)' }}>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>ツールは手段、自走が目的</p>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
-              AIやシステムはあくまでツールのひとつです。大切なのはその使い方——全自動なのか、半自動なのか、手作業なのか。人とシステムの役割分担を丁寧に設計することが、採用の質や定着率につながると考えています。robottteは「企業が自走できる状態」をゴールに、後方から支援していきたいと思っています。
-            </p>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.27 }}
-            style={{ padding: '32px 36px', background: 'var(--surface)', borderRadius: 'var(--radius)', borderLeft: '3px solid rgba(0,160,232,0.4)', boxShadow: 'var(--shadow)' }}>
             <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>持続可能なモデルを選ぶ</p>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
               人口減少が続く社会で、高単価・高回転のサービスは長続きしにくいと感じています。robottteは、お客様が長く、無理なく使い続けられることを大切にしながら設計していきたいと考えています。ハビタブルゾーンを広げるためには、提供する側も持続可能でなければならないと思っています。
             </p>
           </motion.div>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 72 }} className="problem-grid">
-          {problems.map((p, i) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 + i * 0.12 }}
-              whileHover={{ y: -6, rotateY: 2, boxShadow: '0 20px 50px rgba(0,160,232,0.12)', transition: { type: 'spring', stiffness: 300, damping: 22 } }}
-              style={{ padding: '40px 32px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', boxShadow: 'var(--shadow)', position: 'relative', overflow: 'hidden', transformStyle: 'preserve-3d' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--accent)', opacity: 0.55, borderRadius: 'var(--radius) var(--radius) 0 0' }} />
-              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.5rem', fontWeight: 700, color: 'var(--accent)', opacity: 0.4, marginBottom: 20, letterSpacing: '0.02em' }}>{p.time}</div>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'var(--text)', marginBottom: 28, fontWeight: 500 }}>{p.scene}</p>
-              <motion.span
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={inView ? { scale: 1, opacity: 1 } : {}}
-                transition={{ delay: 0.5 + i * 0.12, type: 'spring', stiffness: 400 }}
-                style={{ display: 'inline-block', fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.08em', color: 'var(--accent)', background: 'var(--accent-light)', padding: '5px 14px', borderRadius: 6 }}>
-                {p.impact}
-              </motion.span>
-            </motion.div>
-          ))}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.27 }}
+            style={{ padding: '32px 36px', background: 'var(--surface)', borderRadius: 'var(--radius)', borderLeft: '3px solid rgba(0,160,232,0.4)', boxShadow: 'var(--shadow)' }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>ツールは手段、自走が目的</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
+              AIやシステムはあくまでツールのひとつです。大切なのはその使い方——全自動なのか、半自動なのか、手作業なのか。人とシステムの役割分担を丁寧に設計することが、採用の質や定着率につながると考えています。robottteは「企業が自走できる状態」をゴールに、後方から支援していきたいと思っています。
+            </p>
+          </motion.div>
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.6 }} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
@@ -71,7 +46,6 @@ export default function Why() {
         </motion.div>
       </div>
       <style>{`
-        @media (max-width: 860px) { .problem-grid { grid-template-columns: 1fr !important; } }
         @media (max-width: 760px) { .philosophy-grid { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
