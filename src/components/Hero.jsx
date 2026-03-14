@@ -106,7 +106,7 @@ export default function Hero() {
 
           <motion.p variants={itemAnim} style={{ fontSize: '1rem', color: 'var(--text-muted)', lineHeight: 2.1, maxWidth: 500, marginBottom: 44 }}>
             人口減少が進む社会において、「人が働き、生き続けられる空間」を増やす。<br />
-            AIの力で、持続可能な社会構造を創造する。
+            AIを含む情報技術の力の集積と人の力で、持続可能な社会を創造する。
           </motion.p>
 
           <motion.div variants={itemAnim} style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>

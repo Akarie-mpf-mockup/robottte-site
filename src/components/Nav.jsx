@@ -26,8 +26,7 @@ export default function Nav() {
         transition={{ duration: 0.6 }}
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, height: 'var(--nav-h)',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '0 40px', zIndex: 200,
+          zIndex: 200,
           background: scrolled ? 'rgba(255,255,255,0.95)' : 'transparent',
           backdropFilter: scrolled ? 'blur(16px)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(0,160,232,0.12)' : '1px solid transparent',
@@ -35,6 +34,7 @@ export default function Nav() {
           transition: 'all 0.4s ease',
         }}>
 
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '100%' }}>
         <a href="#" style={{ display: 'flex', alignItems: 'center' }}>
           <img
             src="/images/robottte納品_Horizontal Set.png"
@@ -62,6 +62,7 @@ export default function Nav() {
           <span style={{ display: 'block', width: 24, height: 2, background: 'var(--text)', borderRadius: 2 }} />
           <span style={{ display: 'block', width: 24, height: 2, background: 'var(--text)', borderRadius: 2 }} />
         </button>
+        </div>
       </motion.nav>
 
       <AnimatePresence>
