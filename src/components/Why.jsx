@@ -18,7 +18,7 @@ export default function Why() {
           <p className="label">Philosophy</p>
           <h2 className="section-title" style={{ marginBottom: 16, maxWidth: 640 }}>エッセンシャルワーカーの働く現場を、<br />持続可能にする。</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 560, marginBottom: 64 }}>
-            労働集約産業が直面する構造課題——人手不足、高離職率、多拠点管理——は、個別の努力では解決できない。robottteはこれを、テクノロジーで構造ごと変える。
+            労働集約産業が直面する構造課題——人手不足、高離職率、多拠点管理——は、現場の努力だけでは乗り越えにくい現実があります。robottteはテクノロジーを活用しながら、その構造ごとアプローチしていきたいと考えています。
           </p>
         </motion.div>
 

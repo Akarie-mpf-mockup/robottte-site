@@ -22,13 +22,13 @@ export default function Products() {
             <div style={{ padding: '32px 36px', background: 'var(--bg2)', borderRadius: 'var(--radius)', borderLeft: '3px solid var(--accent)' }}>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>ツールは手段、自走が目的</p>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
-                AIやシステムはあくまでツールに過ぎない。大切なのはその使い方——全自動なのか、半自動なのか、手作業なのか。人とシステムのバウンダリーを正しく設計することが、採用の質と定着率を左右する。robottteは「企業が自走できる状態」をゴールに、後方支援に徹する。
+                AIやシステムはあくまでツールのひとつです。大切なのはその使い方——全自動なのか、半自動なのか、手作業なのか。人とシステムの役割分担を丁寧に設計することが、採用の質や定着率につながると考えています。robottteは「企業が自走できる状態」をゴールに、後方から支援していきたいと思っています。
               </p>
             </div>
             <div style={{ padding: '32px 36px', background: 'var(--bg2)', borderRadius: 'var(--radius)', borderLeft: '3px solid rgba(0,160,232,0.4)' }}>
               <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>持続可能なモデルを選ぶ</p>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
-                人口減少が続く社会で、高単価・高回転のサービスは持続しない。robottteは顧客が長く、無理なく使い続けられることを最優先に設計する。ハビタブルゾーンを広げるためには、提供側も持続可能でなければならない。
+                人口減少が続く社会で、高単価・高回転のサービスは長続きしにくいと感じています。robottteは、お客様が長く、無理なく使い続けられることを大切にしながら設計していきたいと考えています。ハビタブルゾーンを広げるためには、提供する側も持続可能でなければならないと思っています。
               </p>
             </div>
           </div>
