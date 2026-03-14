@@ -15,22 +15,22 @@ export default function Investor() {
       <div className="container">
         <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }}>
           <p className="label">Investors</p>
-          <h2 className="section-title" style={{ marginBottom: 64 }}>投資家メッセージ</h2>
-          <div style={{ maxWidth: 800, margin: '0 auto', padding: '64px', background: 'var(--surface)', border: '1px solid var(--border)', borderLeft: '2px solid var(--gold)', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: -60, right: -60, width: 300, height: 300, borderRadius: '50%', background: 'rgba(200,169,110,0.04)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+          <h2 className="section-title" style={{ marginBottom: 56 }}>投資家メッセージ</h2>
+          <div style={{ maxWidth: 800, margin: '0 auto', padding: '56px 64px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', borderLeft: '3px solid var(--accent)', boxShadow: 'var(--shadow-md)', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: -60, right: -60, width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,160,232,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative' }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: '4rem', color: 'rgba(200,169,110,0.2)', lineHeight: 1, marginBottom: 8 }}>"</div>
-              <p style={{ fontSize: '1.1rem', lineHeight: 2, color: 'var(--text-muted)', marginBottom: 40 }}>{investorMessage.quote}</p>
+              <div style={{ fontFamily: 'Georgia, serif', fontSize: '4rem', color: 'var(--accent)', opacity: 0.2, lineHeight: 1, marginBottom: 8 }}>"</div>
+              <p style={{ fontSize: '1.08rem', lineHeight: 2.1, color: 'var(--text-muted)', marginBottom: 40 }}>{investorMessage.quote}</p>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'linear-gradient(135deg, rgba(200,169,110,0.3), rgba(200,169,110,0.1))', border: '1px solid rgba(200,169,110,0.2)' }} />
+                <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'var(--accent-light)', border: '2px solid var(--border)' }} />
                 <div>
-                  <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--gold)' }}>{investorMessage.name}</div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--text-dim)' }}>{investorMessage.title}</div>
+                  <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text)' }}>{investorMessage.name}</div>
+                  <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 500, marginTop: 2 }}>{investorMessage.title}</div>
                 </div>
               </div>
             </div>
           </div>
-          <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text-dim)', textAlign: 'center', marginTop: 24 }}>
+          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', textAlign: 'center', marginTop: 20 }}>
             ※ 投資家メッセージはsrc/components/Investor.jsxを編集して更新できます
           </p>
         </motion.div>

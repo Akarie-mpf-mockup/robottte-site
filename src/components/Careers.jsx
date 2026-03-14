@@ -11,29 +11,41 @@ export default function Careers() {
   return (
     <section id="careers" className="section">
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 64 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 56 }}>
           <p className="label">Careers</p>
           <h2 className="section-title" style={{ marginBottom: 16 }}>一緒に、ハビタブルゾーンを拡げよう</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 2, maxWidth: 520 }}>少数精鋭で大きなインパクトを。robottteは現在、各ポジションで仲間を募集しています。</p>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 520 }}>少数精鋭で大きなインパクトを。robottteは現在、各ポジションで仲間を募集しています。</p>
         </motion.div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {jobs.map((job, i) => (
-            <motion.div key={job.id} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: i * 0.1 }}
-              whileHover={{ borderColor: 'rgba(79,124,255,0.3)' }}
-              style={{ padding: '36px 40px', background: 'var(--surface)', border: '1px solid var(--border)', display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 32, transition: 'border-color 0.3s' }} className="job-row">
+            <motion.div key={job.id}
+              initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: i * 0.1 }}
+              whileHover={{ boxShadow: '0 8px 32px rgba(0,160,232,0.12)', borderColor: 'rgba(0,160,232,0.35)', y: -2, transition: { duration: 0.2 } }}
+              style={{ padding: '32px 40px', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: 32, boxShadow: 'var(--shadow)', transition: 'border-color 0.3s, box-shadow 0.3s' }}
+              className="job-row">
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700 }}>{job.title}</h3>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', letterSpacing: '0.1em', padding: '3px 10px', background: 'rgba(0,212,170,0.08)', color: 'var(--accent3)', borderRadius: 2 }}>{job.type}</span>
+                  <h3 style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)' }}>{job.title}</h3>
+                  <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '4px 12px', background: 'var(--accent-light)', color: 'var(--accent)', borderRadius: 6 }}>{job.type}</span>
                 </div>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.8, marginBottom: 10 }}>{job.description}</p>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text-dim)' }}>📍 {job.location}</span>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.8, marginBottom: 10 }}>{job.description}</p>
+                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 500 }}>📍 {job.location}</span>
               </div>
-              <a href="#contact" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.1em', color: 'var(--accent)', whiteSpace: 'nowrap', padding: '10px 20px', border: '1px solid rgba(79,124,255,0.3)', borderRadius: 4 }}>Apply →</a>
+              <a href="#contact"
+                style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.82rem', fontWeight: 600, color: 'var(--accent)', whiteSpace: 'nowrap', padding: '11px 24px', border: '1.5px solid var(--accent)', borderRadius: 8, transition: 'background 0.2s', background: 'transparent' }}
+                onMouseEnter={e => { e.target.style.background = 'var(--accent)'; e.target.style.color = '#fff' }}
+                onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = 'var(--accent)' }}>
+                Apply →
+              </a>
             </motion.div>
           ))}
+          {jobs.length === 0 && (
+            <div style={{ padding: '48px 32px', textAlign: 'center', color: 'var(--text-dim)', fontSize: '0.9rem', background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)' }}>
+              現在募集中のポジションはありません
+            </div>
+          )}
         </div>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', color: 'var(--text-dim)', marginTop: 32 }}>※ 採用情報の追加・更新は public/data/careers.json を編集してください</p>
+        <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', marginTop: 24 }}>※ 採用情報の追加・更新は public/data/careers.json を編集してください</p>
       </div>
       <style>{`@media (max-width: 700px) { .job-row { grid-template-columns: 1fr !important; } }`}</style>
     </section>

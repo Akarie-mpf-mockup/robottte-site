@@ -5,7 +5,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 60)
+    const h = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', h)
     return () => window.removeEventListener('scroll', h)
   }, [])
@@ -18,35 +18,41 @@ export default function Nav() {
   ]
   return (
     <>
-      <motion.nav initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, height: 'var(--nav-h)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '0 40px', zIndex: 200,
-          background: scrolled ? 'rgba(2,2,10,0.9)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(24px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(41,171,226,0.15)' : '1px solid transparent',
-          transition: 'all 0.5s ease',
+          background: scrolled ? 'rgba(255,255,255,0.95)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(16px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(0,160,232,0.12)' : '1px solid transparent',
+          boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.06)' : 'none',
+          transition: 'all 0.4s ease',
         }}>
 
-        {/* ロゴ */}
         <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <img src="/images/正方形logo.jpg" alt="robottte" style={{ width: 32, height: 32, borderRadius: 6 }} />
-          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #fff, rgba(255,255,255,0.7))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>robottte</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.03em', color: 'var(--text)' }}>robottte</span>
         </a>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 36 }} className="nav-desktop">
           {links.map(l => (
-            <a key={l.href} href={l.href} style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.1em', color: 'var(--text-muted)', transition: 'color 0.2s' }}
-              onMouseEnter={e => e.target.style.color = 'var(--text)'}
+            <a key={l.href} href={l.href}
+              style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.82rem', fontWeight: 500, color: 'var(--text-muted)', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.target.style.color = 'var(--accent)'}
               onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}>{l.label}</a>
           ))}
-          <a href="#contact" style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', letterSpacing: '0.1em', padding: '8px 20px', border: '1px solid rgba(41,171,226,0.4)', borderRadius: 4, color: 'var(--accent)', transition: 'background 0.2s' }}
-            onMouseEnter={e => e.target.style.background = 'rgba(41,171,226,0.1)'}
-            onMouseLeave={e => e.target.style.background = 'transparent'}>Contact</a>
+          <a href="#contact"
+            style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.82rem', fontWeight: 600, padding: '9px 22px', background: 'var(--accent)', borderRadius: 8, color: '#fff', transition: 'background 0.2s, transform 0.2s' }}
+            onMouseEnter={e => { e.target.style.background = 'var(--accent-dark)'; e.target.style.transform = 'translateY(-1px)' }}
+            onMouseLeave={e => { e.target.style.background = 'var(--accent)'; e.target.style.transform = 'translateY(0)' }}>Contact</a>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="nav-hamburger" style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', flexDirection: 'column', gap: 5 }}>
+        <button onClick={() => setOpen(!open)} className="nav-hamburger"
+          style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', flexDirection: 'column', gap: 5, padding: 4 }}>
           <span style={{ display: 'block', width: 24, height: 2, background: 'var(--text)', borderRadius: 2 }} />
           <span style={{ display: 'block', width: 24, height: 2, background: 'var(--text)', borderRadius: 2 }} />
           <span style={{ display: 'block', width: 24, height: 2, background: 'var(--text)', borderRadius: 2 }} />
@@ -56,10 +62,10 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(2,2,10,0.97)', zIndex: 199, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 32 }}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(255,255,255,0.98)', zIndex: 199, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 32 }}
             onClick={() => setOpen(false)}>
             {[...links, { label: 'Contact', href: '#contact' }].map(l => (
-              <a key={l.href} href={l.href} style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', fontWeight: 700, color: 'var(--text)' }}>{l.label}</a>
+              <a key={l.href} href={l.href} style={{ fontFamily: 'Inter, Noto Sans JP, sans-serif', fontSize: '1.8rem', fontWeight: 700, color: 'var(--text)' }}>{l.label}</a>
             ))}
           </motion.div>
         )}
