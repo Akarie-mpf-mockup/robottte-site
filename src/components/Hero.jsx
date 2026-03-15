@@ -60,9 +60,15 @@ function PlanetVisual({ size = 460 }) {
       initial={{ opacity: 0, scale: 0.8, x: 30 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       transition={{ duration: 1.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-      <motion.div animate={{ y: [0, -22, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}>
+      <motion.a
+        href="#products"
+        animate={{ y: [0, -22, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        whileHover={{ scale: 1.06, filter: 'brightness(1.12)', transition: { duration: 0.3 } }}
+        whileTap={{ scale: 0.93, transition: { type: 'spring', stiffness: 600, damping: 18 } }}
+        style={{ display: 'block', cursor: 'pointer' }}>
         <PlanetSVG size={size} />
-      </motion.div>
+      </motion.a>
     </motion.div>
   )
 }
