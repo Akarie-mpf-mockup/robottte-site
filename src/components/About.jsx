@@ -30,7 +30,7 @@ export default function About() {
     <section id="about" className="section" style={{ background: 'var(--bg2)', position: 'relative', overflow: 'hidden' }}>
       <img src="/images/robottte納品_slim.png" alt="" aria-hidden="true" style={{ position: 'absolute', bottom: '-60px', right: '-60px', width: 340, height: 340, objectFit: 'contain', opacity: 0.06, pointerEvents: 'none', userSelect: 'none' }} />
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 72 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 72 }}>
           <p className="label">Company</p>
           <h2 className="section-title">会社概要</h2>
         </motion.div>
@@ -38,7 +38,7 @@ export default function About() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'start' }} className="about-grid">
 
           {/* 会社概要テーブル */}
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.1 }}>
+          <motion.div initial={{ opacity: 0, x: -60, scale: 0.95 }} animate={inView ? { opacity: 1, x: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.1 }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <tbody>
                 {companyInfo.map((row, i) => (
@@ -56,7 +56,7 @@ export default function About() {
           </motion.div>
 
           {/* 沿革 */}
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }}>
+          <motion.div initial={{ opacity: 0, x: 60, scale: 0.95 }} animate={inView ? { opacity: 1, x: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.18 }}>
             <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--text-dim)', marginBottom: 32 }}>History</p>
             <div style={{ position: 'relative' }}>
               {/* 縦線 */}
@@ -64,7 +64,7 @@ export default function About() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 32, paddingLeft: 28 }}>
                 {history.map((h, i) => (
                   <motion.div key={i}
-                    initial={{ opacity: 0, x: 10 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                    initial={{ opacity: 0, x: 30 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.25 + i * 0.06 }}
                     style={{ position: 'relative' }}>
                     {/* ドット */}
                     <div style={{ position: 'absolute', left: -32, top: 6, width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)', border: '2px solid white' }} />

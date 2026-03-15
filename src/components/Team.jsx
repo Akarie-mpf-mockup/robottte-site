@@ -71,7 +71,7 @@ export default function Team() {
     <section id="team" className="section" style={{ background: 'var(--bg2)' }}>
       <div className="container">
 
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 56 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 56 }}>
           <p className="label">Team</p>
           <h2 className="section-title" style={{ marginBottom: 16 }}>創業者・メンバー</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 580 }}>
@@ -81,7 +81,7 @@ export default function Team() {
         </motion.div>
 
         {/* 3つの軸バッジ */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}
+        <motion.div initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.1 }}
           style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 52 }}>
           {members.map(m => {
             const c = pillarColors[m.pillar]
@@ -101,9 +101,9 @@ export default function Team() {
             const c = pillarColors[m.pillar]
             return (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.3 + i * 0.13, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 100, scale: 0.92 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ type: 'spring', stiffness: 480, damping: 26, delay: 0.15 + i * 0.08 }}
                 whileHover={{ y: -6, boxShadow: `0 16px 48px ${c.bg.replace('0.08', '0.18')}`, transition: { duration: 0.25 } }}
                 style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', borderTop: `3px solid ${c.color}`, boxShadow: 'var(--shadow)', overflow: 'hidden', transition: 'box-shadow 0.3s' }}>
 

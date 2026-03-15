@@ -9,7 +9,7 @@ export default function Why() {
   return (
     <section id="why" className="section" style={{ background: 'var(--bg2)' }}>
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }}>
           <p className="label">Philosophy</p>
           <h2 className="section-title" style={{ marginBottom: 16, maxWidth: 640 }}>エッセンシャルワーカーの働く現場を、持続可能にする。</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 560, marginBottom: 64 }}>
@@ -18,14 +18,14 @@ export default function Why() {
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 48 }} className="philosophy-grid">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.15 }}
+          <motion.div initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.1 }}
             style={{ padding: '32px 36px', background: 'var(--surface)', borderRadius: 'var(--radius)', borderLeft: '3px solid var(--accent)', boxShadow: 'var(--shadow)' }}>
             <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>持続可能なモデルを選ぶ</p>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
               人口減少が続く社会で、高単価・高回転のサービスは長続きしにくいと感じています。robottteは、お客様が長く、無理なく使い続けられることを大切にしながら設計していきたいと考えています。ハビタブルゾーンを広げるためには、提供する側も持続可能でなければならないと思っています。
             </p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.27 }}
+          <motion.div initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.18 }}
             style={{ padding: '32px 36px', background: 'var(--surface)', borderRadius: 'var(--radius)', borderLeft: '3px solid rgba(0,160,232,0.4)', boxShadow: 'var(--shadow)' }}>
             <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12 }}>ツールは手段、自走が目的</p>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', lineHeight: 1.95 }}>
@@ -34,11 +34,11 @@ export default function Why() {
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.6 }} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.28 }} style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
           <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.1em', color: 'var(--text-dim)', textTransform: 'uppercase', marginRight: 4 }}>Focus Industries</span>
           {industries.map((ind, i) => (
             <motion.span key={ind}
-              initial={{ opacity: 0, scale: 0.9 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ delay: 0.7 + i * 0.06 }}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }} animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}} transition={{ type: 'spring', stiffness: 600, damping: 26, delay: 0.3 + i * 0.05 }}
               style={{ fontFamily: 'Inter, M PLUS 1p, sans-serif', fontSize: '0.8rem', fontWeight: 500, padding: '6px 18px', border: '1.5px solid var(--border)', borderRadius: 8, color: 'var(--text-muted)', background: 'var(--surface)' }}>
               {ind}
             </motion.span>

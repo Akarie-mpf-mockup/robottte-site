@@ -37,7 +37,7 @@ export default function Results() {
   return (
     <section id="results" className="section" style={{ background: 'var(--bg2)' }}>
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 72 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 72 }}>
           <p className="label">Results</p>
           <h2 className="section-title">現場が証明する、<br />実績。</h2>
         </motion.div>
@@ -45,7 +45,7 @@ export default function Results() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 72 }} className="stats-grid">
           {stats.map((s, i) => (
             <motion.div key={s.label}
-              initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: i * 0.12 }}
+              initial={{ opacity: 0, y: 90, scale: 0.92 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: i * 0.07 }}
               style={{ padding: '48px 40px', background: 'linear-gradient(160deg, #fff 60%, #EDF7FD 100%)', borderRadius: 'var(--radius)', border: '1px solid var(--border)', borderTop: '3px solid var(--accent)', textAlign: 'center', boxShadow: 'var(--shadow)' }}>
               <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(2.4rem, 4vw, 3.4rem)', fontWeight: 800, color: 'var(--accent)', lineHeight: 1, marginBottom: 12, letterSpacing: '-0.03em' }}>
                 {s.end !== null
@@ -58,7 +58,7 @@ export default function Results() {
           ))}
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: 0.4 }} style={{ marginBottom: 56 }}>
+        <motion.div initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.2 }} style={{ marginBottom: 56 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
             <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.14em', color: 'var(--text-dim)', textTransform: 'uppercase', margin: 0 }}>Customer Voices</p>
             <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '3px 12px', background: 'var(--accent-light)', color: 'var(--accent)', borderRadius: 6 }}>HR Monster</span>

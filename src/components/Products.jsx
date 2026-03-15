@@ -13,16 +13,17 @@ export default function Products() {
   return (
     <section id="products" className="section">
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 64 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 64 }}>
           <p className="label">Products</p>
-          <h2 className="section-title" style={{ marginBottom: 32 }}>応募前 → 選考中 → 入社後</h2>
+          <h2 className="section-title" style={{ marginBottom: 16 }}>採用が、自走する。</h2>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 520 }}>応募前の不安解消から選考中の業務効率化、入社後の定着まで。採用の全工程を、テクノロジーでカバーします。</p>
 
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 56 }} className="products-grid">
           {products.map((p, i) => (
             <motion.div key={p.name}
-              initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 100, scale: 0.92 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 480, damping: 26, delay: i * 0.07 }}
               whileHover={{ y: -10, boxShadow: '0 24px 64px rgba(0,160,232,0.26)', scale: 1.01, transition: { type: 'spring', stiffness: 320, damping: 22 } }}
               style={{ background: 'var(--surface)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius)', borderTop: `3px solid ${p.color}`, padding: '40px 32px', boxShadow: 'var(--shadow)', transition: 'box-shadow 0.3s' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>

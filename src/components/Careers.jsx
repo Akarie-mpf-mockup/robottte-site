@@ -14,7 +14,7 @@ export default function Careers() {
   return (
     <section id="careers" className="section">
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 56 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 56 }}>
           <p className="label">Careers</p>
           <h2 className="section-title" style={{ marginBottom: 16 }}>一緒に、ハビタブルゾーンを拡げよう</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 520 }}>
@@ -32,9 +32,9 @@ export default function Careers() {
 
             return (
               <motion.div key={job.id}
-                initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                initial={{ opacity: 0, y: 90, scale: 0.93 }}
+                animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ type: 'spring', stiffness: 480, damping: 26, delay: i * 0.07 }}
                 onMouseEnter={() => setHoveredId(job.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 style={{

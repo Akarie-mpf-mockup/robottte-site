@@ -11,14 +11,14 @@ export default function News() {
   return (
     <section id="news" className="section" style={{ background: 'var(--bg2)' }}>
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }} style={{ marginBottom: 48 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 48 }}>
           <p className="label">News</p>
           <h2 className="section-title">お知らせ</h2>
         </motion.div>
         <div style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', boxShadow: 'var(--shadow)', overflow: 'hidden' }}>
           {news.map((item, i) => (
             <motion.div key={item.id}
-              initial={{ opacity: 0, x: -16 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.5, delay: i * 0.07 }}
+              initial={{ opacity: 0, x: -50 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: i * 0.05 }}
               style={{ display: 'grid', gridTemplateColumns: '140px 120px 1fr auto', alignItems: 'center', gap: 28, padding: '22px 32px', borderBottom: i < news.length - 1 ? '1px solid var(--border-light)' : 'none' }}
               className="news-row">
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 500, color: 'var(--text-dim)' }}>{item.date}</span>
