@@ -28,7 +28,7 @@ const members = [
   {
     name: null,
     nameEn: null,
-    initials: 'N.H.',
+    initials: 'NH',
     role: 'Customer Success',
     pillar: '現場理解',
     pillarEn: 'Field',
