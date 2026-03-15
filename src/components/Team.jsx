@@ -11,7 +11,7 @@ const members = [
     pillar: '事業経験',
     pillarEn: 'Business',
     photo: '/images/プロフィール-removebg-preview.jpeg',
-    bio: '東京外国語大学卒業後、ユニリーバ・ベネッセ（介護事業）を経て、株式会社アカリエを創業。従業員150名規模まで事業を成長させ EXIT を経験。労働集約産業の経営課題を内側から知り尽くした起業家として、robottteを創業。',
+    bio: '東京外国語大学卒業後、ユニリーバ・ベネッセ（介護事業）を経て、株式会社アカリエを創業。従業員150名規模まで事業を成長させ EXIT を経験。現場に何度も助けられながら事業を育て、その構造課題を肌で学んできた起業家として、robottteを創業。',
     career: ['東京外国語大学', 'ユニリーバ', 'ベネッセ（介護事業）', '株式会社アカリエ 創業 / EXIT', 'robottte 創業'],
   },
   {
@@ -28,7 +28,7 @@ const members = [
   {
     name: null,
     nameEn: null,
-    initials: 'H',
+    initials: 'N.H.',
     role: 'Customer Success',
     pillar: '現場理解',
     pillarEn: 'Field',
