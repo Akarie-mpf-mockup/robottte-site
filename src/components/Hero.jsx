@@ -126,14 +126,13 @@ function PlanetVisual({ size = 460 }) {
           ))
         )}
 
-        <motion.a
-          href="#products"
+        <motion.div
           whileHover={{ scale: 1.06, filter: 'brightness(1.12)', transition: { duration: 0.3 } }}
           whileTap={{ scale: 0.82, filter: 'brightness(1.9) saturate(1.4)', transition: { type: 'spring', stiffness: 800, damping: 12 } }}
-          onClick={handleClick}
+          onClick={e => { handleClick(); setTimeout(() => { window.location.hash = '#products' }, 850) }}
           style={{ display: 'block', cursor: 'pointer', position: 'relative', zIndex: 1 }}>
           <PlanetSVG size={size} />
-        </motion.a>
+        </motion.div>
       </motion.div>
     </motion.div>
   )
