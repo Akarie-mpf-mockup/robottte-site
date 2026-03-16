@@ -10,7 +10,7 @@ const products = [
 export default function Products() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(1)
   const p = products[active]
 
   return (
