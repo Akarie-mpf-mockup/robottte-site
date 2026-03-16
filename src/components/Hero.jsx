@@ -106,14 +106,14 @@ function PlanetVisual({ size = 460 }) {
         {ripples.flatMap(id =>
           flyLogos.map((logo, i) => (
             <motion.div key={`logo-${id}-${i}`}
-              initial={{ x: 0, y: 0, opacity: 0, scale: 0.35 }}
+              initial={{ x: 0, y: 0, opacity: 1, scale: 0.2 }}
               animate={{
                 x: logo.tx * dist,
                 y: logo.ty * dist,
-                opacity: [0, 1, 1, 0],
-                scale: [0.35, 1.05, 1, 0.9],
+                opacity: [1, 1, 0],
+                scale: [0.2, 1.3, 1.1],
               }}
-              transition={{ duration: 1.0, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.75, ease: [0.1, 0.8, 0.3, 1] }}
               style={{
                 position: 'absolute',
                 top: '50%', left: '50%',
@@ -121,7 +121,7 @@ function PlanetVisual({ size = 460 }) {
                 marginLeft: -(imgW / 2),
                 pointerEvents: 'none', zIndex: 3,
               }}>
-              <img src={logo.src} alt="" style={{ width: imgW, height: 'auto', display: 'block' }} />
+              <img src={logo.src} alt="" style={{ width: imgW, height: 'auto', display: 'block', mixBlendMode: 'multiply' }} />
             </motion.div>
           ))
         )}
