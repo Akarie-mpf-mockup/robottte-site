@@ -55,22 +55,24 @@ function PlanetSVG({ size = 460 }) {
 }
 
 const flyLogos = [
-  { src: '/images/robottte右.png', tx: 1, ty: 0 },
-  { src: '/images/robottte左.png', tx: -1, ty: 0 },
-  { src: '/images/robottte上.png', tx: 0, ty: -1 },
+  { src: '/images/robottte右.png', ix: 750, iy: 0 },
+  { src: '/images/robottte左.png', ix: -750, iy: 0 },
+  { src: '/images/robottte上.png', ix: 0, iy: -600 },
 ]
 
 function PlanetVisual({ size = 460 }) {
   const [ripples, setRipples] = useState([])
   const ringSize = size * 0.478
-  const imgW = Math.round(size * 0.26)
+  const imgW = Math.round(size * 0.34)
   const imgH = Math.round(imgW * 1.41)
-  const dist = size * 0.72
 
   const handleClick = () => {
     const id = Date.now()
     setRipples(r => [...r, id])
-    setTimeout(() => setRipples(r => r.filter(x => x !== id)), 2000)
+    setTimeout(() => {
+      document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })
+    }, 900)
+    setTimeout(() => setRipples([]), 1400)
   }
 
   return (
@@ -102,18 +104,13 @@ function PlanetVisual({ size = 460 }) {
           ))
         )}
 
-        {/* Flying logos on tap */}
+        {/* Logos flying IN from edges */}
         {ripples.flatMap(id =>
           flyLogos.map((logo, i) => (
             <motion.div key={`logo-${id}-${i}`}
-              initial={{ x: 0, y: 0, opacity: 1, scale: 0.2 }}
-              animate={{
-                x: logo.tx * dist,
-                y: logo.ty * dist,
-                opacity: [1, 1, 0],
-                scale: [0.2, 1.3, 1.1],
-              }}
-              transition={{ duration: 0.75, ease: [0.1, 0.8, 0.3, 1] }}
+              initial={{ x: logo.ix, y: logo.iy, opacity: 0, scale: 0.7 }}
+              animate={{ x: 0, y: 0, opacity: [0, 1, 1], scale: [0.7, 1.1, 1] }}
+              transition={{ duration: 0.65, ease: 'easeOut' }}
               style={{
                 position: 'absolute',
                 top: '50%', left: '50%',
