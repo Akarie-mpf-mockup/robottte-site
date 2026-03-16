@@ -16,7 +16,7 @@ const members = [
   {
     name: null,
     nameEn: null,
-    initials: 'AS',
+    initials: 'ES',
     role: 'Engineer',
     pillar: '技術',
     pillarEn: 'Technology',
