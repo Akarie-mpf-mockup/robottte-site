@@ -1,5 +1,5 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef, useState } from 'react'
 
 const products = [
   { phase: '応募前', num: '01', name: 'HR Chat', color: '#00A0E8', desc: '応募前の疑問・不安にAIが24時間対応します。応募意欲を高め、条件のミスマッチを事前に解消。企業担当者の負担を減らしながら、応募者との丁寧な関係構築を支援します。', features: ['24時間365日対応', '応募前の疑問を即解決', 'FAQ自動学習・更新'], href: '#contact' },
@@ -10,47 +10,74 @@ const products = [
 export default function Products() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const [active, setActive] = useState(0)
+  const p = products[active]
+
   return (
     <section id="products" className="section">
       <div className="container">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 64 }}>
+        <motion.div ref={ref} initial={{ opacity: 0, y: 80, scale: 0.93 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28 }} style={{ marginBottom: 48 }}>
           <p className="label">Products</p>
           <h2 className="section-title" style={{ marginBottom: 16 }}>採用が、自走する。</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.98rem', lineHeight: 2, maxWidth: 520 }}>応募前の不安解消から選考中の業務効率化、入社後の定着まで。採用の全工程を、テクノロジーでカバーします。</p>
-
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 56 }} className="products-grid">
-          {products.map((p, i) => (
-            <motion.div key={p.name}
-              initial={{ opacity: 0, y: 100, scale: 0.92 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ type: 'spring', stiffness: 480, damping: 26, delay: i * 0.07 }}
-              whileHover={{ y: -10, boxShadow: '0 24px 64px rgba(0,160,232,0.26)', scale: 1.01, transition: { type: 'spring', stiffness: 320, damping: 22 } }}
-              style={{ background: 'var(--surface)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius)', borderTop: `3px solid ${p.color}`, padding: '40px 32px', boxShadow: 'var(--shadow)', transition: 'box-shadow 0.3s' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.06em', padding: '5px 14px', borderRadius: 6, background: `${p.color}18`, color: p.color }}>{p.phase}</span>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-dim)', opacity: 0.5 }}>{p.num}</span>
-              </div>
-              <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.8rem', fontWeight: 800, color: p.color, marginBottom: 14, letterSpacing: '-0.03em' }}>{p.name}</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.9, marginBottom: 28 }}>{p.desc}</p>
+        {/* タブ */}
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.1 }}
+          style={{ display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
+          {products.map((prod, i) => (
+            <button key={prod.phase} onClick={() => setActive(i)}
+              style={{
+                padding: '10px 32px', borderRadius: 10,
+                border: `2px solid ${active === i ? prod.color : 'var(--border-light)'}`,
+                background: active === i ? prod.color + '14' : 'transparent',
+                color: active === i ? prod.color : 'var(--text-dim)',
+                fontFamily: 'Inter, M PLUS 1p, sans-serif', fontSize: '0.9rem', fontWeight: 700,
+                cursor: 'pointer', transition: 'all 0.2s', outline: 'none',
+              }}>
+              {prod.phase}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* コンテンツ */}
+        <AnimatePresence mode="wait">
+          <motion.div key={active}
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.97 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+            style={{
+              background: 'var(--surface)', borderRadius: 'var(--radius)',
+              border: '1px solid var(--border-light)', borderTop: `3px solid ${p.color}`,
+              padding: '48px 56px', boxShadow: 'var(--shadow)',
+              display: 'grid', gridTemplateColumns: '1fr auto', gap: 48, alignItems: 'center',
+            }}
+            className="product-card-inner">
+            <div>
+              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.06em', padding: '5px 14px', borderRadius: 6, background: p.color + '18', color: p.color, marginBottom: 20, display: 'inline-block' }}>{p.phase}</span>
+              <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '2.4rem', fontWeight: 800, color: p.color, marginBottom: 16, letterSpacing: '-0.03em' }}>{p.name}</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.9, marginBottom: 28, maxWidth: 520 }}>{p.desc}</p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 36 }}>
                 {p.features.map(f => (
-                  <li key={f} style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <li key={f} style={{ fontSize: '0.88rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 10 }}>
                     <span style={{ width: 6, height: 6, borderRadius: '50%', background: p.color, display: 'block', flexShrink: 0 }} />
                     {f}
                   </li>
                 ))}
               </ul>
               <a href={p.href} target={p.href.startsWith('http') ? '_blank' : undefined} rel="noopener"
-                style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.8rem', fontWeight: 600, color: p.color, letterSpacing: '0.04em' }}>
+                style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.85rem', fontWeight: 600, color: p.color, letterSpacing: '0.04em' }}>
                 Learn more →
               </a>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '9rem', fontWeight: 800, color: p.color, opacity: 0.07, lineHeight: 1, userSelect: 'none', flexShrink: 0 }}>
+              {p.num}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
-      <style>{`
-        @media (max-width: 900px) { .products-grid { grid-template-columns: 1fr !important; } }
-      `}</style>
+      <style>{`@media (max-width: 700px) { .product-card-inner { grid-template-columns: 1fr !important; padding: 32px 28px !important; } }`}</style>
     </section>
   )
 }

@@ -1,7 +1,6 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef, useState } from 'react'
 
-// ── メンバーデータ ────────────────────────────────────────────────
 const members = [
   {
     name: '高橋 健一',
@@ -37,7 +36,6 @@ const members = [
     career: ['介護士（現場経験）', '株式会社アカリエ', 'robottte CS'],
   },
 ]
-// ────────────────────────────────────────────────────────────────────
 
 const pillarColors = {
   '事業経験': { bg: 'rgba(0,160,232,0.08)', color: '#00A0E8', border: 'rgba(0,160,232,0.25)' },
@@ -45,17 +43,17 @@ const pillarColors = {
   '現場理解': { bg: 'rgba(0,110,163,0.08)', color: '#006EA3', border: 'rgba(0,110,163,0.25)' },
 }
 
-function Avatar({ member, size = 96 }) {
+function Avatar({ member, size = 56 }) {
   const c = pillarColors[member.pillar]
   if (member.photo) {
     return (
-      <div style={{ width: size, height: size, borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--accent-light)', background: 'var(--bg2)', flexShrink: 0 }}>
+      <div style={{ width: size, height: size, borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--accent-light)', background: 'var(--bg2)', flexShrink: 0 }}>
         <img src={member.photo} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
       </div>
     )
   }
   return (
-    <div style={{ width: size, height: size, borderRadius: '50%', background: c.bg, border: `3px solid ${c.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+    <div style={{ width: size, height: size, borderRadius: '50%', background: c.bg, border: `2px solid ${c.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
       <span style={{ fontFamily: 'Inter, sans-serif', fontSize: size * 0.30, fontWeight: 700, color: c.color, letterSpacing: '0.05em' }}>
         {member.initials}
       </span>
@@ -66,6 +64,7 @@ function Avatar({ member, size = 96 }) {
 export default function Team() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const [hoveredId, setHoveredId] = useState(null)
 
   return (
     <section id="team" className="section" style={{ background: 'var(--bg2)' }}>
@@ -80,63 +79,86 @@ export default function Team() {
           </p>
         </motion.div>
 
-        {/* 3つの軸バッジ */}
-        <motion.div initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ type: 'spring', stiffness: 500, damping: 28, delay: 0.1 }}
-          style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 52 }}>
-          {members.map(m => {
-            const c = pillarColors[m.pillar]
-            return (
-              <div key={m.pillar} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 20px', borderRadius: 10, background: c.bg, border: `1.5px solid ${c.border}` }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: c.color, display: 'block' }} />
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, color: c.color }}>{m.pillar}</span>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', color: c.color, opacity: 0.6 }}>/ {m.pillarEn}</span>
-              </div>
-            )
-          })}
-        </motion.div>
-
-        {/* メンバーカード */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }} className="team-grid">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           {members.map((m, i) => {
             const c = pillarColors[m.pillar]
+            const isHovered = hoveredId === i
+
             return (
               <motion.div key={i}
-                initial={{ opacity: 0, y: 100, scale: 0.92 }}
+                initial={{ opacity: 0, y: 90, scale: 0.93 }}
                 animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
                 transition={{ type: 'spring', stiffness: 480, damping: 26, delay: 0.15 + i * 0.08 }}
-                whileHover={{ y: -6, boxShadow: `0 16px 48px ${c.bg.replace('0.08', '0.18')}`, transition: { duration: 0.25 } }}
-                style={{ background: 'var(--surface)', borderRadius: 'var(--radius)', border: '1px solid var(--border-light)', borderTop: `3px solid ${c.color}`, boxShadow: 'var(--shadow)', overflow: 'hidden', transition: 'box-shadow 0.3s' }}>
+                onMouseEnter={() => setHoveredId(i)}
+                onMouseLeave={() => setHoveredId(null)}
+                style={{
+                  background: isHovered ? c.bg : 'var(--surface)',
+                  borderRadius: 'var(--radius)',
+                  border: `1px solid ${isHovered ? c.border : 'var(--border-light)'}`,
+                  borderTop: `3px solid ${c.color}`,
+                  boxShadow: isHovered ? `0 12px 40px ${c.bg.replace('0.08', '0.20')}` : 'var(--shadow)',
+                  overflow: 'hidden',
+                  transition: 'background 0.3s, border-color 0.3s, box-shadow 0.3s',
+                  cursor: 'default',
+                }}>
 
-                <div style={{ padding: '36px 36px 28px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderBottom: '1px solid var(--border-light)' }}>
-                  <Avatar member={m} size={96} />
-                  <div style={{ marginTop: 20 }}>
-                    {m.name && <div style={{ fontFamily: 'Inter, M PLUS 1p, sans-serif', fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)', marginBottom: 3 }}>{m.name}</div>}
-                    {m.nameEn && <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: 14 }}>{m.nameEn}</div>}
-                    <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap', marginTop: m.nameEn ? 0 : 14 }}>
-                      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '4px 14px', borderRadius: 6, background: 'var(--bg2)', color: 'var(--text-muted)', border: '1px solid var(--border-light)' }}>{m.role}</span>
-                      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 700, padding: '4px 14px', borderRadius: 6, background: c.bg, color: c.color, border: `1px solid ${c.border}` }}>{m.pillar}</span>
+                {/* 常時表示：アバター＋名前＋役職 */}
+                <div style={{ padding: '20px 28px', display: 'flex', alignItems: 'center', gap: 20 }}>
+                  <Avatar member={m} size={56} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontFamily: 'Inter, M PLUS 1p, sans-serif', fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: 4 }}>
+                      {m.name || m.initials}
+                      {m.nameEn && <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: 'var(--text-dim)', fontWeight: 400, marginLeft: 10 }}>{m.nameEn}</span>}
+                    </div>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '3px 12px', borderRadius: 6, background: 'var(--bg2)', color: 'var(--text-muted)', border: '1px solid var(--border-light)' }}>{m.role}</span>
+                      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 700, padding: '3px 12px', borderRadius: 6, background: c.bg, color: c.color, border: `1px solid ${c.border}` }}>{m.pillar} / {m.pillarEn}</span>
                     </div>
                   </div>
+                  <motion.span
+                    animate={{ opacity: isHovered ? 0 : 1, y: isHovered ? -4 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: c.color, fontWeight: 600, flexShrink: 0 }}>
+                    詳細 ↓
+                  </motion.span>
                 </div>
 
-                <div style={{ padding: '28px 36px 36px' }}>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.9, marginBottom: 24 }}>{m.bio}</p>
-                  <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-dim)', marginBottom: 12 }}>Career</p>
-                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 7 }}>
-                    {m.career.map((item, j) => (
-                      <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-                        <span style={{ width: 5, height: 5, borderRadius: '50%', background: c.color, display: 'block', flexShrink: 0, marginTop: 6 }} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {/* ホバーで展開 */}
+                <AnimatePresence initial={false}>
+                  {isHovered && (
+                    <motion.div
+                      key="detail"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                      style={{ overflow: 'hidden' }}>
+                      <div style={{ padding: '0 28px 28px', borderTop: `1px solid ${c.border}`, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, paddingTop: 24 }} className="team-detail-grid">
+                        <div>
+                          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: c.color, marginBottom: 10 }}>Profile</p>
+                          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.9 }}>{m.bio}</p>
+                        </div>
+                        <div>
+                          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: c.color, marginBottom: 10 }}>Career</p>
+                          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                            {m.career.map((item, j) => (
+                              <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                                <span style={{ width: 5, height: 5, borderRadius: '50%', background: c.color, display: 'block', flexShrink: 0, marginTop: 6 }} />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             )
           })}
         </div>
       </div>
-      <style>{`@media (max-width: 900px) { .team-grid { grid-template-columns: 1fr !important; max-width: 520px; margin: 0 auto; } }`}</style>
+      <style>{`@media (max-width: 600px) { .team-detail-grid { grid-template-columns: 1fr !important; } }`}</style>
     </section>
   )
 }
