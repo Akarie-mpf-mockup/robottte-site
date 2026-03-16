@@ -23,7 +23,15 @@ export default function News() {
               className="news-row">
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 500, color: 'var(--text-dim)' }}>{item.date}</span>
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, padding: '4px 12px', borderRadius: 6, background: 'var(--accent-light)', color: 'var(--accent)', whiteSpace: 'nowrap', width: 'fit-content', justifySelf: 'center' }}>{item.category}</span>
-              <span style={{ fontSize: '0.92rem', color: 'var(--text)', fontWeight: 400 }}>{item.title}</span>
+              {item.url
+                ? <a href={item.url} target="_blank" rel="noopener" title={item.url}
+                    style={{ fontSize: '0.92rem', color: 'var(--text)', fontWeight: 400, textDecoration: 'none', borderBottom: '1px dashed rgba(0,160,232,0.4)', transition: 'color 0.2s, border-color 0.2s' }}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderBottomColor = 'var(--accent)' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.borderBottomColor = 'rgba(0,160,232,0.4)' }}>
+                    {item.title}
+                  </a>
+                : <span style={{ fontSize: '0.92rem', color: 'var(--text)', fontWeight: 400 }}>{item.title}</span>
+              }
               {item.url
                 ? <a href={item.url} target="_blank" rel="noopener" style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 600, color: 'var(--accent)', whiteSpace: 'nowrap' }}>詳細 →</a>
                 : <span />}
