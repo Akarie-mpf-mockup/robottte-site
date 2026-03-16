@@ -54,14 +54,23 @@ function PlanetSVG({ size = 460 }) {
   )
 }
 
+const flyLogos = [
+  { src: '/images/robottte右.png', tx: 1, ty: 0 },
+  { src: '/images/robottte左.png', tx: -1, ty: 0 },
+  { src: '/images/robottte上.png', tx: 0, ty: -1 },
+]
+
 function PlanetVisual({ size = 460 }) {
   const [ripples, setRipples] = useState([])
   const ringSize = size * 0.478
+  const imgW = Math.round(size * 0.26)
+  const imgH = Math.round(imgW * 1.41)
+  const dist = size * 0.72
 
   const handleClick = () => {
     const id = Date.now()
     setRipples(r => [...r, id])
-    setTimeout(() => setRipples(r => r.filter(x => x !== id)), 2200)
+    setTimeout(() => setRipples(r => r.filter(x => x !== id)), 2000)
   }
 
   return (
@@ -77,7 +86,7 @@ function PlanetVisual({ size = 460 }) {
         {/* Shockwave rings on tap */}
         {ripples.flatMap(id =>
           [0, 1, 2].map(i => (
-            <motion.div key={`${id}-${i}`}
+            <motion.div key={`ring-${id}-${i}`}
               initial={{ scale: 1, opacity: 0.7 - i * 0.15 }}
               animate={{ scale: 4.2, opacity: 0 }}
               transition={{ duration: 1.5 + i * 0.12, delay: i * 0.22, ease: 'easeOut' }}
@@ -90,6 +99,30 @@ function PlanetVisual({ size = 460 }) {
                 border: `${1.8 - i * 0.4}px solid rgba(0,160,232,${0.6 - i * 0.15})`,
                 pointerEvents: 'none', zIndex: 2,
               }} />
+          ))
+        )}
+
+        {/* Flying logos on tap */}
+        {ripples.flatMap(id =>
+          flyLogos.map((logo, i) => (
+            <motion.div key={`logo-${id}-${i}`}
+              initial={{ x: 0, y: 0, opacity: 0, scale: 0.35 }}
+              animate={{
+                x: logo.tx * dist,
+                y: logo.ty * dist,
+                opacity: [0, 1, 1, 0],
+                scale: [0.35, 1.05, 1, 0.9],
+              }}
+              transition={{ duration: 1.0, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                position: 'absolute',
+                top: '50%', left: '50%',
+                marginTop: -(imgH / 2),
+                marginLeft: -(imgW / 2),
+                pointerEvents: 'none', zIndex: 3,
+              }}>
+              <img src={logo.src} alt="" style={{ width: imgW, height: 'auto', display: 'block' }} />
+            </motion.div>
           ))
         )}
 
