@@ -12,7 +12,6 @@ export default function Nav() {
   const links = [
     { label: 'Philosophy', href: '#why' },
     { label: 'Products', href: '#products' },
-    { label: 'Results', href: '#results' },
     { label: 'Team', href: '#team' },
     { label: 'Company', href: '#about' },
     { label: 'News', href: '#news' },
