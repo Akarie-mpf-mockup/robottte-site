@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 function PlanetSVG({ size = 460 }) {
   const cx = size / 2
@@ -55,20 +55,53 @@ function PlanetSVG({ size = 460 }) {
 }
 
 function PlanetVisual({ size = 460 }) {
+  const [ripples, setRipples] = useState([])
+  const ringSize = size * 0.478
+
+  const handleClick = () => {
+    const id = Date.now()
+    setRipples(r => [...r, id])
+    setTimeout(() => setRipples(r => r.filter(x => x !== id)), 2200)
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8, x: 30 }}
       animate={{ opacity: 1, scale: 1, x: 0 }}
       transition={{ duration: 1.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}>
-      <motion.a
-        href="#products"
+      <motion.div
         animate={{ y: [0, -22, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        whileHover={{ scale: 1.06, filter: 'brightness(1.12)', transition: { duration: 0.3 } }}
-        whileTap={{ scale: 0.93, transition: { type: 'spring', stiffness: 600, damping: 18 } }}
-        style={{ display: 'block', cursor: 'pointer' }}>
-        <PlanetSVG size={size} />
-      </motion.a>
+        style={{ position: 'relative', width: size, height: size }}>
+
+        {/* Shockwave rings on tap */}
+        {ripples.flatMap(id =>
+          [0, 1, 2].map(i => (
+            <motion.div key={`${id}-${i}`}
+              initial={{ scale: 1, opacity: 0.7 - i * 0.15 }}
+              animate={{ scale: 4.2, opacity: 0 }}
+              transition={{ duration: 1.5 + i * 0.12, delay: i * 0.22, ease: 'easeOut' }}
+              style={{
+                position: 'absolute',
+                width: ringSize, height: ringSize,
+                top: '50%', left: '50%',
+                marginTop: -(ringSize / 2), marginLeft: -(ringSize / 2),
+                borderRadius: '50%',
+                border: `${1.8 - i * 0.4}px solid rgba(0,160,232,${0.6 - i * 0.15})`,
+                pointerEvents: 'none', zIndex: 2,
+              }} />
+          ))
+        )}
+
+        <motion.a
+          href="#products"
+          whileHover={{ scale: 1.06, filter: 'brightness(1.12)', transition: { duration: 0.3 } }}
+          whileTap={{ scale: 0.82, filter: 'brightness(1.9) saturate(1.4)', transition: { type: 'spring', stiffness: 800, damping: 12 } }}
+          onClick={handleClick}
+          style={{ display: 'block', cursor: 'pointer', position: 'relative', zIndex: 1 }}>
+          <PlanetSVG size={size} />
+        </motion.a>
+      </motion.div>
     </motion.div>
   )
 }
