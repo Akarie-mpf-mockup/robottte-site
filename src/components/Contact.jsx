@@ -12,7 +12,7 @@ export default function Contact() {
           <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center', padding: '80px 56px', background: 'rgba(255,255,255,0.85)', borderRadius: 20, border: '1px solid rgba(0,160,232,0.15)', boxShadow: '0 16px 64px rgba(0,160,232,0.10)', backdropFilter: 'blur(8px)', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: -80, right: -80, width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,160,232,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
             <div style={{ position: 'relative' }}>
-              <p className="label" style={{ justifyContent: 'center' }}>Contact</p>
+              <p className="label" style={{ justifyContent: 'center' }}>Contact<span aria-hidden="true" style={{ display:'block', width:20, height:2, background:'var(--accent)', borderRadius:1 }} /></p>
               <h2 className="section-title" style={{ marginBottom: 20 }}>お問い合わせ</h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 2, marginBottom: 44, maxWidth: 480, margin: '0 auto 44px' }}>
                 サービス導入のご相談・資料請求・採用についてはメールにてご連絡ください。
