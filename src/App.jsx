@@ -20,9 +20,9 @@ export default function App() {
       <Hero />
       <Why />
       <Products />
-      <News />
       <Team />
       <About />
+      <News />
       <Careers />
       <Contact />
       <Footer />
