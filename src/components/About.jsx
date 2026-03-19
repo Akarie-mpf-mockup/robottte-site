@@ -10,7 +10,7 @@ const companyInfo = [
   { label: '資本金',     value: '66,090,100円' },
   { label: '累計調達額', value: '約1.6億円（2026年3月時点）' },
   { label: '事業内容',   value: 'HRテクノロジープロダクトの開発・提供' },
-  { label: 'メンバー',   value: '創業期以前参画 5名 ／ 創業期以降参画 10名 ／ 株主・サポーター 7名' },
+  { label: 'メンバー',   value: '開発サポート　7名\nカスタマーサクセス　3名\n営業サポート　9名' },
   { label: '所在地',     value: '〒107-0062 東京都港区南青山二丁目2番15号 ウィン青山942' },
   { label: 'お問い合わせ', value: 'kiban@robottte.com' },
 ]
@@ -47,7 +47,7 @@ export default function About() {
                     <td style={{ padding: '16px 20px 16px 0', fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 600, color: 'var(--text-dim)', whiteSpace: 'nowrap', verticalAlign: 'top', width: '7em' }}>
                       {row.label}
                     </td>
-                    <td style={{ padding: '16px 0', fontSize: '0.92rem', color: 'var(--text)', lineHeight: 1.7 }}>
+                    <td style={{ padding: '16px 0', fontSize: '0.92rem', color: 'var(--text)', lineHeight: 1.7, whiteSpace: 'pre-line' }}>
                       {row.value}
                     </td>
                   </tr>
