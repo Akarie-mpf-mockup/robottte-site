@@ -10,6 +10,7 @@ const companyInfo = [
   { label: '資本金',     value: '66,090,100円' },
   { label: '累計調達額', value: '約1.6億円（2026年3月時点）' },
   { label: '事業内容',   value: 'HRテクノロジープロダクトの開発・提供' },
+  { label: 'メンバー',   value: '創業期以前参画 5名 ／ 創業期以降参画 10名 ／ 株主・サポーター 7名' },
   { label: '所在地',     value: '〒107-0062 東京都港区南青山二丁目2番15号 ウィン青山942' },
   { label: 'お問い合わせ', value: 'kiban@robottte.com' },
 ]
