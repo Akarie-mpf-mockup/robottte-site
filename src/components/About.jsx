@@ -20,11 +20,11 @@ const history = [
   { year: '2021年8月',  text: '株式会社アカリエよりカーブアウトし、設立' },
   { year: '2023年4月',  text: 'シード期 約3,000万円調達' },
   { year: '2025年',     text: 'Talent Keeper（タレントキーパー）事業スタート' },
-  { year: '2026年3月',  text: 'プレシリーズA期 Equity & Debt にて約1.3億円調達' },
+  { year: '2026年3月',  text: 'プレシリーズA期 Equity & Debt にて約1.3億円調達', press: 'pre-series-a' },
 ]
 // ────────────────────────────────────────────────────────────────────
 
-export default function About() {
+export default function About({ onOpenPress }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -71,7 +71,17 @@ export default function About() {
                     {/* ドット */}
                     <div style={{ position: 'absolute', left: -32, top: 6, width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)', border: '2px solid white' }} />
                     <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.78rem', fontWeight: 700, color: 'var(--accent)', marginBottom: 4 }}>{h.year}</div>
-                    <div style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>{h.text}</div>
+                    {h.press ? (
+                      <button onClick={() => onOpenPress?.(h.press)}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'transparent', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.7, borderBottom: '1px dashed rgba(0,160,232,0.4)', transition: 'color 0.2s, border-color 0.2s' }}
+                        onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent)'; e.currentTarget.style.borderBottomColor = 'var(--accent)' }}
+                        onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderBottomColor = 'rgba(0,160,232,0.4)' }}>
+                        {h.text}
+                        <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, color: 'var(--accent)' }}>→</span>
+                      </button>
+                    ) : (
+                      <div style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>{h.text}</div>
+                    )}
                   </motion.div>
                 ))}
               </div>
