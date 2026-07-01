@@ -152,6 +152,12 @@ export default function PressModal({ press, onClose }) {
                     <span style={{ color: 'var(--text-dim)', marginLeft: 10 }}>{press.byline.role}</span>
                   </p>
                 )}
+                {press.officialRelease && (
+                  <a href={press.officialRelease.href} target="_blank" rel="noopener noreferrer"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 16, padding: '8px 16px', background: 'var(--accent-light)', borderRadius: 8, fontFamily: 'Inter, sans-serif', fontSize: '0.83rem', fontWeight: 600, color: 'var(--accent)', textDecoration: 'none' }}>
+                    📄 {press.officialRelease.label} →
+                  </a>
+                )}
               </header>
 
               {/* Intro */}
@@ -262,9 +268,11 @@ export default function PressModal({ press, onClose }) {
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 8 }}>
                     {press.furtherReading.map((l, i) => (
                       <li key={i}>
-                        <a href={l.href} onClick={l.scrollOnClose ? onClose : undefined}
+                        <a href={l.href}
+                          {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                          onClick={l.scrollOnClose ? onClose : undefined}
                           style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'Inter, sans-serif', fontSize: '0.9rem', fontWeight: 600, color: 'var(--accent)' }}>
-                          → {l.label}
+                          → {l.label}{l.external ? ' ↗' : ''}
                         </a>
                       </li>
                     ))}

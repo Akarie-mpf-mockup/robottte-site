@@ -6,6 +6,10 @@ export const preSeriesA = {
   title: 'ハビタブルゾーンを、拡げる。',
   subtitle: '――プレシリーズA期、約1.3億円の資金調達を実施しました。',
   byline: { name: '髙𣘺 健一', role: 'robottte 代表取締役' },
+  officialRelease: {
+    label: '公式プレスリリース（PR TIMES）',
+    href: 'https://prtimes.jp/main/html/rd/p/000000001.000179235.html',
+  },
   intro: [
     '皆様へご報告させてください。',
     '株式会社robottteは、2026年3月、プレシリーズA期において、株式と融資を組み合わせた形で、約1.3億円の資金調達を実施いたしました。創業以来の累計調達額は約1.6億円となりました。',
@@ -171,6 +175,7 @@ export const preSeriesA = {
   ],
   closing: { date: '2026年5月', name: '髙𣘺 健一', role: '株式会社robottte 代表取締役' },
   furtherReading: [
+    { label: '公式プレスリリース（PR TIMES）', href: 'https://prtimes.jp/main/html/rd/p/000000001.000179235.html', external: true },
     { label: 'Philosophy（私たちの考え方）', href: '#why', scrollOnClose: true },
     { label: 'Products（プロダクト紹介）', href: '#products', scrollOnClose: true },
     { label: 'Careers（採用情報）', href: '#careers', scrollOnClose: true },
