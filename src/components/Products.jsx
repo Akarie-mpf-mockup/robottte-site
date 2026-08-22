@@ -2,7 +2,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 
 const products = [
-  { phase: '応募前', num: '01', name: 'HR Chat', color: '#00A0E8', desc: '応募前の疑問・不安にAIが24時間対応します。応募意欲を高め、条件のミスマッチを事前に解消。企業担当者の負担を減らしながら、応募者との丁寧な関係構築を支援します。', features: ['24時間365日対応', '応募前の疑問を即解決', 'FAQ自動学習・更新'], href: '#contact' },
+  { phase: '応募前', num: '01', name: 'HR Partner / HR Chat', color: '#00A0E8', headline: '求人媒体・人材紹介への依存が高い拠点に、採用の自走力を。', desc: '市場・競合・自社を診断し、検索・地図・SNSから採用ページ、応募導線まで、自社で応募を集める経路を一貫して整えます。応募前の疑問には、AIチャットが24時間対応します。', features: ['SEO・MEOで見つけてもらう', 'Instagram・SNSで働く姿を伝える', '採用ページとAIチャットで応募につなげる'], href: 'https://hrpartner.robottte.com/', linkLabel: '診断を選ぶ →' },
   { phase: '選考中', num: '02', name: 'HR Monster', color: '#0080C0', desc: '応募受付から面接調整まで、人とシステムの役割分担を設計しながら業務を効率化します。条件分岐で適切な候補者を面接へつなぎ、複数媒体の応募を一元管理します。', features: ['応募対応・面接調整支援', '条件分岐スクリーニング', '複数媒体一元管理'], href: 'https://hr-monster.io/' },
   { phase: '入社後', num: '03', name: 'Talent Keeper', color: '#006EA3', desc: '入社後フォローを継続的にサポートし、離職予兆を早期に把握します。スタッフが自律的に定着できる環境づくりを、企業と一緒に考えていきます。', features: ['入社後フォロー継続支援', '離職予兆の早期把握', 'エンゲージメント可視化'], href: 'https://www.talentkeeper.jp/' },
 ]
@@ -57,6 +57,7 @@ export default function Products() {
             <div>
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.06em', padding: '5px 14px', borderRadius: 6, background: p.color + '18', color: p.color, marginBottom: 20, display: 'inline-block' }}>{p.phase}</span>
               <h3 style={{ fontFamily: 'Inter, sans-serif', fontSize: '2.4rem', fontWeight: 800, color: p.color, marginBottom: 16, letterSpacing: '-0.03em' }}>{p.name}</h3>
+              {p.headline && <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text)', lineHeight: 1.7, marginBottom: 14, maxWidth: 520 }}>{p.headline}</h4>}
               <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.9, marginBottom: 28, maxWidth: 520 }}>{p.desc}</p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 36 }}>
                 {p.features.map(f => (
@@ -68,7 +69,7 @@ export default function Products() {
               </ul>
               <a href={p.href} target={p.href.startsWith('http') ? '_blank' : undefined} rel="noopener"
                 style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.85rem', fontWeight: 600, color: p.color, letterSpacing: '0.04em' }}>
-                Learn more →
+                {p.linkLabel || 'Learn more →'}
               </a>
             </div>
             <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '9rem', fontWeight: 800, color: p.color, opacity: 0.07, lineHeight: 1, userSelect: 'none', flexShrink: 0 }}>
