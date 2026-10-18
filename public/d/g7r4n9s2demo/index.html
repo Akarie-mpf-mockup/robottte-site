@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>専用デモへのアクセス｜robottte</title>
+  <link rel="stylesheet" href="/d/g7r4n9s2demo/gate.css">
+  <script src="/d/g7r4n9s2demo/gate.js" defer></script>
+</head>
+<body>
+  <main class="card" id="gate">
+    <p class="brand">robottte <span>DEMO</span></p>
+    <h1>専用デモへのアクセス</h1>
+    <p class="intro">ご案内したパスワードを入力してください。</p>
+    <form id="unlock-form">
+      <label for="password">閲覧用パスワード</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="message">
+      <label class="show"><input id="show-password" type="checkbox"> パスワードを表示する</label>
+      <button id="unlock" type="submit">デモを開く</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+    <p class="note">パスワードが不明な場合は、ご案内元の担当者へお問い合わせください。</p>
+    <noscript>閲覧にはブラウザーのJavaScriptを有効にしてください。</noscript>
+  </main>
+  <section id="viewer" hidden>
+    <header class="viewer-bar"><span>robottte / 専用デモ</span><button id="lock" type="button">デモを閉じる</button></header>
+    <iframe id="demo-frame" title="操作デモ" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"></iframe>
+  </section>
+</body>
+</html>
