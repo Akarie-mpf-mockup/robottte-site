@@ -14,14 +14,14 @@
     <p class="brand">robottte <span>DEMO</span></p>
     <h1>専用デモへのアクセス</h1>
     <p class="intro">ご案内したパスワードを入力してください。</p>
-    <form id="unlock-form">
+    <form id="unlock-form" method="post">
       <label for="password">閲覧用パスワード</label>
       <input id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="message">
       <label class="show"><input id="show-password" type="checkbox"> パスワードを表示する</label>
-      <button id="unlock" type="submit">デモを開く</button>
+      <button id="unlock" type="submit" disabled>デモを開く</button>
       <p id="message" role="status" aria-live="polite"></p>
     </form>
-    <p class="note">パスワードが不明な場合は、ご案内元の担当者へお問い合わせください。</p>
+    <p class="note">このタブでは最大30分、閲覧状態を保持します。「デモを閉じる」で解除します。パスワードが不明な場合は、ご案内元へお問い合わせください。</p>
     <noscript>閲覧にはブラウザーのJavaScriptを有効にしてください。</noscript>
   </main>
   <section id="viewer" hidden>

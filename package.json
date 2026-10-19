@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "prebuild": "node scripts/verify-demo-access.mjs"
+    "prebuild": "npm run build:demo-viewer && node scripts/verify-demo-access.mjs",
+    "build:demo-viewer": "node scripts/viewer/install-public.mjs g7r4n9s2demo"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
