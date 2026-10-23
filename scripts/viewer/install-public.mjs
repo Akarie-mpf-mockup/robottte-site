@@ -11,6 +11,18 @@ for(const folder of [path.join(root,'public'),path.join(root,'public/d'),route])
  const st=await lstat(folder);if(st.isSymbolicLink()||!st.isDirectory())throw Error('Route must be an ordinary directory');
 }
 const files=await viewerFiles(await readFile(path.join(route,'index.html'),'utf8'),await readFile(path.join(route,'gate.css'),'utf8'));
+// This guide already has a compact logo header inside its encrypted body.
+// Place the viewer's close control on that row without changing its lifecycle.
+if(code==='g7r4n9s2demo'){
+ const marker='/* Single-row shared guide chrome. */';
+ files['gate.css']=files['gate.css'].split(marker)[0].trimEnd()+'\n\n'+marker+`\n
+body.open .viewer-bar{position:relative;z-index:100;height:0;padding:0;border:0}
+body.open .viewer-bar>span{display:none}
+body.open .viewer-bar button{position:fixed;top:6px;right:14px;min-height:28px}
+body.open #demo-frame{height:100svh}
+@media(max-width:700px){body.open .viewer-bar button{top:4px;right:12px;min-height:36px}}
+`;
+}
 for(const name of Object.keys(files)){
  const st=await lstat(path.join(route,name));if(st.isSymbolicLink()||!st.isFile())throw Error('Asset must be an ordinary file');
 }

@@ -8,3 +8,11 @@
 .viewer-bar button{min-height:28px;padding:4px 10px;font-size:11px;line-height:1.25;border-radius:6px}
 iframe{height:calc(100svh - var(--viewer-bar-height))}
 @media(max-width:680px){:root{--viewer-bar-height:44px}.viewer-bar{padding:0 12px}.viewer-bar button{min-height:36px;padding:6px 10px}}
+
+/* Single-row shared guide chrome. */
+
+body.open .viewer-bar{position:relative;z-index:100;height:0;padding:0;border:0}
+body.open .viewer-bar>span{display:none}
+body.open .viewer-bar button{position:fixed;top:6px;right:14px;min-height:28px}
+body.open #demo-frame{height:100svh}
+@media(max-width:700px){body.open .viewer-bar button{top:4px;right:12px;min-height:36px}}
